@@ -1,0 +1,32 @@
+page-select-picture {
+  .pictures{
+    position: relative;
+    float: left;
+    width: 60px;
+    height: 60px;
+    margin: 3px;
+  }
+
+  .add{
+    font-size: 25px;
+    color: #5c5c5c;
+    text-align: center;
+    border: solid 1px #e0dfe4;
+    line-height: 60px;
+    vertical-align: middle;
+  }
+
+  .remove {
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    display: block;
+    width: 18px;
+    height: 18px;
+    border-radius: 18px;
+    font-size: 16px;
+    text-align: center;
+    color: #fff;
+    background-color: red;
+  }
+}

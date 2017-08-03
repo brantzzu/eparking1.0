@@ -1,0 +1,9 @@
+<div class="clear-fix">
+  <div *ngFor="let fileObj of fileObjList, let i = index" class="pictures">
+    <span class="remove" (click)="deletePicture(i)">×</span>
+    <img src="{{fileObj.thumbPath}}" (click)="viewerPicture(i)">
+  </div>
+  <div *ngIf="fileObjList.length<max&&allowAdd" (click)="addPicture()" class="pictures add">
+    <ion-icon name="camera"></ion-icon>
+  </div>
+</div>
