@@ -7,6 +7,7 @@ import {ChartjsDemoPage} from "./chartjs-demo/chartjs-demo";
 import {SelectPicDemoPage} from "./select-pic-demo/select-pic-demo";
 import {CustomPipeDemo} from "./custom-pipe-demo/custom-pipe-demo";
 import {TransitionDemoPage} from "./transition-demo/transition-demo";
+import {CropPicDemoPage} from "./crop-pic-demo/crop-pic-demo";
 
 @Component({
   selector: 'page-contact',
@@ -36,6 +37,10 @@ export class DemoPage {
 
   selectPic() {
     this.navCtrl.push(SelectPicDemoPage);
+  }
+
+  cropPic() {
+    this.navCtrl.push(CropPicDemoPage);
   }
 
   pageTransition() {
