@@ -24,6 +24,7 @@ export class HomePage {
   marker: any;//地图坐标点信息
   locationLng: any;
   locationLat: any;
+  searchMarkers: any = [];
   url: string = MARKER_URL;
   constructor(private modalCtrl: ModalController,
     private viewCtrl: ViewController,
@@ -79,18 +80,16 @@ export class HomePage {
     let that = this;
     let modal = this.modalCtrl.create(LocationSearchModalPage);
     modal.present();
-    let searchMarkers = [];
     modal.onDidDismiss(marker => {
       if (marker) {
         //that.showIonFab = true;
         //that.marker.push(marker.location.lng, marker.location.lat);
         //that.map.clearMap();
-        if (searchMarkers != undefined && searchMarkers.length != 0) {
-          for (var i = 0; i < searchMarkers.length; i++) {
-            searchMarkers[i].setMap(null);
-          }
-          searchMarkers = [];
+        for (let i = 0; i < this.searchMarkers.length; i++) {
+          console.log("remove marker:" + this.searchMarkers[i].title);
+          that.map.remove(this.searchMarkers[i]);
         }
+
         let newmarker = new AMap.Marker({
           map: that.map,
           id: marker.id,
@@ -99,11 +98,10 @@ export class HomePage {
           extData: marker,
           title: marker.name
         });
+        this.searchMarkers.push(newmarker);
         newmarker.setMap(that.map);
-        searchMarkers.push(newmarker);
-        //that.initMarker();
-        //that.map.setFitView();
-        //this.map.setZoom(13);
+        that.map.setFitView();
+        that.map.setZoom(11);
       }
     });
   }
