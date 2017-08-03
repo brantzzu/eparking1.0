@@ -2,13 +2,11 @@ import {NgModule} from '@angular/core';
 import {IonicModule} from 'ionic-angular';
 import {TestPage} from "./test";
 import {TestService} from "./TestService";
-import {SharedModule} from "../../shared/shared.module";
-
-
+import {SelectPicturePageModule} from "../../shared/select-picture/select-picture.module";
 @NgModule({
   imports: [
     IonicModule,
-    SharedModule
+    SelectPicturePageModule
   ],
   declarations: [TestPage],
   entryComponents: [TestPage],

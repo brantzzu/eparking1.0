@@ -8,14 +8,19 @@ import { FeedBackPage } from "./feed-back/feed-back";
 import { AboutPage } from "./about/about";
 import { UpdateLogPage } from "./update-log/update-log";
 import { ShowPicturesPage } from "./show-pictures/show-pictures";
-import { SharedModule } from "../../shared/shared.module";
+import { SelectPicturePageModule } from "../../shared/select-picture/select-picture.module";
+import { MineService } from "./MineService";
+import { WorkMapPage } from "./work-map/work-map";
+import { MapLocationModule } from "../../shared/map-component/map-location/map-location.module";
+import { SettingPage } from "./setting/setting";
+import { ChangePasswordPage } from "./change-password/change-password";
 
 
 @NgModule({
-  imports: [IonicModule, SharedModule],
-  declarations: [MinePage, MineEditPage, MineEditModalPage, MineEditAvatarModalPage, FeedBackPage, AboutPage, UpdateLogPage, ShowPicturesPage],
-  entryComponents: [MinePage, MineEditPage, MineEditModalPage, MineEditAvatarModalPage, FeedBackPage, AboutPage, UpdateLogPage, ShowPicturesPage],
-  providers: [],
+  imports: [IonicModule, SelectPicturePageModule, MapLocationModule],
+  declarations: [MinePage, MineEditPage, MineEditModalPage, MineEditAvatarModalPage, FeedBackPage, AboutPage, UpdateLogPage, ShowPicturesPage, WorkMapPage, SettingPage, ChangePasswordPage],
+  entryComponents: [MinePage, MineEditPage, MineEditModalPage, MineEditAvatarModalPage, FeedBackPage, AboutPage, UpdateLogPage, ShowPicturesPage, WorkMapPage, SettingPage, ChangePasswordPage],
+  providers: [MineService],
   exports: [IonicModule]
 })
 export class MineModule {
