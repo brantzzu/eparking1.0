@@ -101,7 +101,7 @@ export class HomePage {
         this.searchMarkers.push(newmarker);
         newmarker.setMap(that.map);
         that.map.setFitView();
-        that.map.setZoom(11);
+        that.map.setZoom(13);
       }
     });
   }

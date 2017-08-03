@@ -1,12 +1,13 @@
-import {Component, ViewChild} from '@angular/core';
-import {Storage} from '@ionic/storage';
-import {Platform, IonicApp, Nav, ModalController, Keyboard, ToastController, Events} from 'ionic-angular';
-import {NativeService} from "../providers/NativeService";
-import {TabsPage} from "../pages/tabs/tabs";
-import {GlobalData} from "../providers/GlobalData";
-import {UserInfo} from "../model/UserInfo";
-import {LoginPage} from "../pages/login/login";
-import {Helper} from "../providers/Helper";
+import { Component, ViewChild } from '@angular/core';
+import { Storage } from '@ionic/storage';
+import { Platform, IonicApp, Nav, ModalController, Keyboard, ToastController, Events } from 'ionic-angular';
+import { NativeService } from "../providers/NativeService";
+import { TabsPage } from "../pages/tabs/tabs";
+import { LoginInfo } from "../model/UserInfo";
+import { LoginPage } from "../pages/login/login";
+import { Helper } from "../providers/Helper";
+import { ENABLE_FUNDEBUG } from "../providers/Constants";
+declare var fundebug;
 
 @Component({
   templateUrl: 'app.html'
@@ -17,25 +18,24 @@ export class MyApp {
   backButtonPressed: boolean = false;
 
   constructor(private platform: Platform,
-              private keyboard: Keyboard,
-              private ionicApp: IonicApp,
-              private storage: Storage,
-              private helper: Helper,
-              private globalData: GlobalData,
-              private toastCtrl: ToastController,
-              private modalCtrl: ModalController,
-              private events: Events,
-              private nativeService: NativeService) {
+    private keyboard: Keyboard,
+    private ionicApp: IonicApp,
+    private storage: Storage,
+    private helper: Helper,
+    private toastCtrl: ToastController,
+    private modalCtrl: ModalController,
+    private events: Events,
+    private nativeService: NativeService) {
     platform.ready().then(() => {
+      if (ENABLE_FUNDEBUG && this.nativeService.isMobile()) {//设置日志监控app的版本号
+        this.nativeService.getVersionNumber().subscribe(version => {
+          fundebug.appversion = version;
+        })
+      }
       this.helper.initJpush();//初始化极光推送
-      this.storage.get('UserInfo').then((userInfo: UserInfo) => {
-        if (userInfo) {
-          this.events.publish('user:login', userInfo);
-          this.globalData.userId = userInfo.id;
-          this.globalData.username = userInfo.username;
-          this.globalData.token = userInfo.token;
-          this.helper.setTags();
-          this.helper.setAlias(userInfo.id);
+      this.storage.get('LoginInfo').then((loginInfo: LoginInfo) => {
+        if (loginInfo) {
+          this.events.publish('user:login', loginInfo);
         } else {
           let modal = this.modalCtrl.create(LoginPage);
           modal.present();
@@ -48,7 +48,7 @@ export class MyApp {
       this.nativeService.splashScreenHide();
       this.registerBackButtonAction();//注册返回按键事件
       this.assertNetwork();//检测网络
-      // this.nativeService.detectionUpgrade();//检测app是否升级
+      this.nativeService.detectionUpgrade();//检测app是否升级
     });
   }
 

@@ -1,10 +1,11 @@
-/**
- * Created by yanxiaojun617@163.com on 12-27.
- */
-import {Injectable} from '@angular/core';
-import {Events} from "ionic-angular";
-import {NativeService} from "./NativeService";
-import {JPush} from "../../typings/modules/jpush/index";
+
+import { Injectable } from '@angular/core';
+import { NativeService } from "./NativeService";
+import { JPush } from "../../typings/modules/jpush/index";
+import { Observable } from "rxjs";
+import { DEFAULT_AVATAR, FILE_SERVE_URL } from "./Constants";
+import { FileService } from "./FileService";
+import { Result } from "../model/Result";
 
 /**
  * Helper类存放和业务有关的公共方法
@@ -13,9 +14,35 @@ import {JPush} from "../../typings/modules/jpush/index";
 @Injectable()
 export class Helper {
 
-  constructor(public events: Events,
-              private jPush:JPush,
-              private nativeService: NativeService) {
+  constructor(private jPush: JPush,
+    private fileService: FileService,
+    private nativeService: NativeService) {
+  }
+
+
+
+  /**
+   * 获取用户头像路径
+   * @param avatarId
+   * @returns {any}
+   */
+  loadAvatarPath(avatarId) {
+    return Observable.create(observer => {
+      if (!avatarId) {
+        observer.next(DEFAULT_AVATAR);
+      } else {
+        this.fileService.getFileInfoById(avatarId).subscribe((res: Result) => {
+          if (res.success) {
+            let avatarPath = FILE_SERVE_URL + res.data.origPath;
+            observer.next(avatarPath);
+          } else {
+            observer.next(DEFAULT_AVATAR);
+          }
+        }, () => {
+          observer.next(DEFAULT_AVATAR);
+        })
+      }
+    });
   }
 
   initJpush() {
@@ -33,7 +60,7 @@ export class Helper {
   }
 
   private jPushAddEventListener() {
-    this.jPush.getUserNotificationSettings().then(result=>{
+    this.jPush.getUserNotificationSettings().then(result => {
       if (result == 0) {
         console.log('系统设置中已关闭应用推送');
       } else if (result > 0) {
@@ -73,7 +100,7 @@ export class Helper {
   }
 
   //设置标签
-  public setTags() {
+  setTags() {
     if (!this.nativeService.isMobile()) {
       return;
     }
@@ -89,7 +116,7 @@ export class Helper {
   }
 
   //设置别名,一个用户只有一个别名
-  public setAlias(userId) {
+  setAlias(userId) {
     if (!this.nativeService.isMobile()) {
       return;
     }
@@ -97,7 +124,7 @@ export class Helper {
     this.jPush.setAlias('' + userId);////ios设置setAlias有bug,值必须为string类型,不能是number
   }
 
-  public setTagsWithAlias(userId) {
+  setTagsWithAlias(userId) {
     if (!this.nativeService.isMobile()) {
       return;
     }
