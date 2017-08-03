@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      预览
+    </ion-title>
+    <ion-buttons>
+      <button ion-button (click)="dismiss()">关闭</button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content text-center>
+  <div *ngFor="let imagePath of imagePaths ,let i = index" style="position: relative">
+    <span class="delete-picture" (click)="deletePictures(i)">
+      <ion-icon name="ios-trash-outline" color="dark"></ion-icon>
+    </span>
+    <img src="{{imagePath}}" width="100%">
+  </div>
+</ion-content>

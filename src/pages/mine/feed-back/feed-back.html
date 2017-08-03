@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>用户信息反馈</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-textarea style="overflow-y:hidden; height:50px;"
+                onpropertychange="this.style.height=this.scrollHeight + 'px'"
+                oninput="this.style.height=this.scrollHeight + 'px'" [(ngModel)]="description"
+                placeholder="请填写问题描述">
+  </ion-textarea>
+  <div>
+    <page-select-pic [(fileObjList)]="fileObjList"></page-select-pic>
+  </div>
+  <div>
+    <button ion-button type="submit" block (click)="save()">保存</button>
+  </div>
+</ion-content>
+
+

@@ -1,0 +1,20 @@
+page-feed-back {
+  .pictures{
+    float: left;
+    width: 75px;
+    height: 75px;
+    padding: 2px;
+    margin: 5px;
+    overflow: hidden;
+  }
+  .pictures>img{
+   min-height: 70px;
+    min-width: 70px;
+  }
+  .add{
+    font-size: 40px;
+    color: #8c8c8c;
+    text-align: center;
+    border: solid 1px #8c8c8c;
+  }
+}

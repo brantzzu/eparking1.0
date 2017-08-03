@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "chart.js": "registry:npm/chart.js#2.1.4+20160615174920"
+  }
+}

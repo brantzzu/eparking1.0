@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      我的
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-color">
+  <ion-list>
+    <ion-item (click)="edit()">
+      <ion-avatar item-left (click)="viewAvatar($event)">
+        <img src="{{avatarPath}}">
+      </ion-avatar>
+      <h2>{{userInfo?.name}}</h2>
+      <p>{{userInfo?.description}}</p>
+      <ion-icon name='ios-arrow-forward' item-right></ion-icon>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item>
+      <ion-icon name="settings" item-left color="primary"></ion-icon>
+      设置
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item (click)="exitSoftware()" hideWhen="ios">
+	  <ion-icon name="log-out" item-left color="danger"></ion-icon>
+      退出软件
+    </ion-item>
+    <ion-item (click)="loginOut()">
+      <ion-icon name="log-in" item-left color="danger"></ion-icon>
+      重新登录
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item (click)="about()">
+      <ion-icon name="information-circle" item-left  color="secondary"></ion-icon>
+      关于
+      <ion-icon name='ios-arrow-forward' item-right></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,27 @@
+<ion-content>
+  <div *ngIf="showIonFab">
+    <ion-fab center bottom>
+      <button ion-fab (click)="mapNavigation(1)">去这里</button>
+    </ion-fab>
+  </div>
+  <!-- <div *ngIf="mapIsComplete">
+    <ion-searchbar class="search-bar" (ionFocus)="ionFocus()" placeholder="找车位" [ngStyle]="{'top': isIos?'16px':''}"></ion-searchbar>
+  </div> -->
+  <div *ngIf="mapIsComplete">
+    <ion-searchbar id="find-place" class="search-bar" (ionFocus)="ionFocus()" placeholder="找车位" [ngStyle]="{'top': isIos?'16px':''}"></ion-searchbar>
+  </div>
+
+  <ion-list>
+    <ion-item *ngFor="let item of items" (click)="selectItem(item)">
+      {{ item.name }}<br/>
+      <span *ngFor="let add of item.address.split(';')">
+        <span class="address">{{add}}</span>
+      </span>
+    </ion-item>
+  </ion-list>
+  <div *ngIf="mapIsComplete&&!isPositioning">
+    <ion-icon name="radio-button-on" class="position-btn" (click)="mapLocation()"></ion-icon>
+  </div>
+  <div id="map_container" class="map-container"></div>
+  <div id="markerinfo"></div>
+</ion-content>

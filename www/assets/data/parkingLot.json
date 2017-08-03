@@ -1,0 +1,182 @@
+[
+    {
+        "parkingLotName": "新金桥设施金藏路停车场",
+        "location": "金藏路258号",
+        "berthNo": 441,
+        "accountingStandards": 4,
+        "parkingLotProperty": "停车场",
+        "serviceTime": "全年全天",
+        "id": 1
+    },
+    {
+        "parkingLotName": "违章事故停车场",
+        "location": "浦东航津路1919号",
+        "berthNo": 100,
+        "accountingStandards": 4,
+        "parkingLotProperty": "停车场",
+        "serviceTime": "全年全天",
+        "id": 2
+    },
+    {
+        "parkingLotName": "金海路违章事故停车场",
+        "location": "浦东金海路2380号",
+        "berthNo": 200,
+        "accountingStandards": 5,
+        "parkingLotProperty": "停车场",
+        "serviceTime": "全年全天",
+        "id": 3
+    },
+    {
+        "parkingLotName": "金隆置地大厦",
+        "location": "昌邑路588弄1号",
+        "berthNo": 45,
+        "accountingStandards": 7,
+        "parkingLotProperty": "停车库(地上)",
+        "serviceTime": "全年全天",
+        "id": 4
+    },
+    {
+        "parkingLotName": "海富花园",
+        "location": "东方路1369号",
+        "berthNo": 199,
+        "accountingStandards": 8,
+        "parkingLotProperty": "停车场",
+        "serviceTime": "全年全天",
+        "id": 5
+    },
+    {
+        "parkingLotName": "邻里之家",
+        "location": "丁香路1599弄",
+        "berthNo": 25,
+        "accountingStandards": 8,
+        "parkingLotProperty": "停车场",
+        "serviceTime": "全年全天",
+        "id": 6
+    },
+    {
+        "parkingLotName": "高桥违章停车场",
+        "location": "凌海路108号",
+        "berthNo": 80,
+        "accountingStandards": 5,
+        "parkingLotProperty": "停车场",
+        "serviceTime": "全年全天",
+        "id": 7
+    },
+    {
+        "parkingLotName": "海桐苑停车场",
+        "location": "浦东海桐路61弄",
+        "berthNo": 230,
+        "accountingStandards": 5,
+        "parkingLotProperty": "停车库(地上)",
+        "serviceTime": "全年全天",
+        "id": 8
+    },
+    {
+        "parkingLotName": "世纪联花花木店",
+        "location": "海桐路338号",
+        "berthNo": 88,
+        "accountingStandards": 8,
+        "parkingLotProperty": "停车库(地上)",
+        "serviceTime": "全年全天",
+        "id": 9
+    },
+    {
+        "parkingLotName": "界龙总部园",
+        "location": "南洋泾路578号",
+        "berthNo": 126,
+        "accountingStandards": 5,
+        "parkingLotProperty": "停车场",
+        "serviceTime": "全年全天",
+        "id": 10
+    },
+    {
+        "parkingLotName": "康远科技园",
+        "location": "浦东新区康花路316号",
+        "berthNo": 68,
+        "accountingStandards": 4,
+        "parkingLotProperty": "停车场",
+        "serviceTime": "全年全天",
+        "id": 11
+    },
+    {
+        "parkingLotName": "海流路违章停车场",
+        "location": "上海市浦东新区海流路PM10-PM19号",
+        "berthNo": 200,
+        "accountingStandards": 5,
+        "parkingLotProperty": "停车场",
+        "serviceTime": "全年全天",
+        "id": 12
+    },
+    {
+        "parkingLotName": "浦东游泳馆",
+        "location": "浦东南路3669号",
+        "berthNo": 90,
+        "accountingStandards": 5,
+        "parkingLotProperty": "停车库(地上)",
+        "serviceTime": "全年全天",
+        "id": 13
+    },
+    {
+        "parkingLotName": "立方大厦",
+        "location": "浦东新区长柳路58号",
+        "berthNo": 140,
+        "accountingStandards": 8,
+        "parkingLotProperty": "停车库(地上)",
+        "serviceTime": "全年全天",
+        "id": 14
+    },
+    {
+        "parkingLotName": "大拇指广场",
+        "location": "丁香路1208号",
+        "berthNo": 395,
+        "accountingStandards": 8,
+        "parkingLotProperty": "停车场",
+        "serviceTime": "全年全天",
+        "id": 15
+    },
+    {
+        "parkingLotName": "碧云玖零商业中心",
+        "location": "浙桥路200号",
+        "berthNo": 215,
+        "accountingStandards": 7,
+        "parkingLotProperty": "停车库(地上)",
+        "serviceTime": "全年全天",
+        "id": 16
+    },
+    {
+        "parkingLotName": "新金桥大厦",
+        "location": "浦东新区碧云路277号",
+        "berthNo": 365,
+        "accountingStandards": 5,
+        "parkingLotProperty": "停车场",
+        "serviceTime": "全年全天",
+        "id": 17
+    },
+    {
+        "parkingLotName": "平安财富大厦",
+        "location": "源深路1088号",
+        "berthNo": 297,
+        "accountingStandards": 8,
+        "parkingLotProperty": "停车场",
+        "serviceTime": "全年全天",
+        "id": 18
+    },
+    {
+        "parkingLotName": "金领之都",
+        "location": "金海路1000号",
+        "berthNo": 40,
+        "accountingStandards": 6,
+        "parkingLotProperty": "停车场",
+        "serviceTime": "全年全天",
+        "id": 19
+    },
+    {
+        "parkingLotName": "上钢集贸市场",
+        "location": "成山路210号",
+        "berthNo": 90,
+        "accountingStandards": 5,
+        "parkingLotProperty": "停车库(地上)",
+        "serviceTime": "全年全天",
+        "id": 20
+    }
+]

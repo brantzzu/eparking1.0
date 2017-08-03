@@ -1,0 +1,56 @@
+page-home {
+  .map-container {
+    width: 100%;
+    height: 100%;
+  }
+  .search-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+  .position-btn {
+    position: absolute;
+    left: 5px;
+    bottom: 50px;
+    z-index: 1;
+    font-size: 22px;
+    padding: 3px 5px 2px 5px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: #555;
+  }
+  .fab-btn {
+    position: absolute;
+    left:50%;
+    margin-left: -80px;
+    bottom: 10px;
+    z-index: 1;
+    text-align: center;
+  }
+  #markerinfo {
+            width: 100%;
+            position:absolute;
+            bottom:0em;
+            margin-left:0px;
+            overflow:hidden;
+            height:auto;
+            background:white;
+            float:left;
+            z-index:9999;
+        }
+  #navigation{
+    background-color: #008CBA; /* Green */
+    border: 1px solid #008CBA;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    width: 30%;
+    display: block;
+    border-radius: 4px;
+  }
+}
+

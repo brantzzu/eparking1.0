@@ -1,0 +1,15 @@
+{
+  "name": "ionic2_tabs",
+  "app_id": "",
+  "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "/app",
+      "proxyUrl": "http://88.128.18.144:7777/app"
+    },
+    {
+      "path": "/kit_file_server",
+      "proxyUrl": "http://88.128.18.144:3333/kit_file_server"
+    }
+  ]
+}
