@@ -118,7 +118,7 @@ export class HomePage {
       that.marker = new AMap.Marker({
         map: that.map,
         //icon: "https://webapi.amap.com/theme/v1.3/markers/n/mark_r.png",
-        icon: "/assets/img/pin.png",
+        icon: "./assets/img/pin.png",
         position: new AMap.LngLat(position['lng'], position['lat']),
 
       });
