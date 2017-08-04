@@ -171,5 +171,15 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "cordova-plugin-offbye-alipay": {
+        "source": {
+            "type": "registry",
+            "id": "https://github.com/DreamMoon/cordova-plugin-alipay.git"
+        },
+        "is_top_level": true,
+        "variables": {
+            "PARTNER_ID": "2088711643087441"
+        }
     }
 }

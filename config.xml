@@ -108,4 +108,7 @@
     <plugin name="cordova-plugin-x-toast" spec="~2.6.0" />
     <plugin name="install" spec="https://github.com/weelion/phonegap-plugin-install" />
     <plugin name="ionic-plugin-keyboard" spec="~2.2.1" />
+    <plugin name="cordova-plugin-offbye-alipay" spec="https://github.com/DreamMoon/cordova-plugin-alipay.git">
+        <variable name="PARTNER_ID" value="2088711643087441" />
+    </plugin>
 </widget>

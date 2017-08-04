@@ -1,0 +1,101 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "https://github.com/DreamMoon/cordova-plugin-alipay.git",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "https://github.com/DreamMoon/cordova-plugin-alipay.git",
+        "spec": "git+https://github.com/DreamMoon/cordova-plugin-alipay.git",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:DreamMoon/cordova-plugin-alipay.git",
+          "sshUrl": "git+ssh://git@github.com/DreamMoon/cordova-plugin-alipay.git",
+          "httpsUrl": "git+https://github.com/DreamMoon/cordova-plugin-alipay.git",
+          "gitUrl": "git://github.com/DreamMoon/cordova-plugin-alipay.git",
+          "shortcut": "github:DreamMoon/cordova-plugin-alipay",
+          "directUrl": "https://raw.githubusercontent.com/DreamMoon/cordova-plugin-alipay/master/package.json"
+        }
+      },
+      "E:\\ionic2_tabs-master\\node_modules"
+    ]
+  ],
+  "_from": "git+https://github.com/DreamMoon/cordova-plugin-alipay.git",
+  "_id": "cordova-plugin-offbye-alipay@1.0.1",
+  "_inCache": true,
+  "_location": "/cordova-plugin-offbye-alipay",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "https://github.com/DreamMoon/cordova-plugin-alipay.git",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "https://github.com/DreamMoon/cordova-plugin-alipay.git",
+    "spec": "git+https://github.com/DreamMoon/cordova-plugin-alipay.git",
+    "type": "hosted",
+    "hosted": {
+      "type": "github",
+      "ssh": "git@github.com:DreamMoon/cordova-plugin-alipay.git",
+      "sshUrl": "git+ssh://git@github.com/DreamMoon/cordova-plugin-alipay.git",
+      "httpsUrl": "git+https://github.com/DreamMoon/cordova-plugin-alipay.git",
+      "gitUrl": "git://github.com/DreamMoon/cordova-plugin-alipay.git",
+      "shortcut": "github:DreamMoon/cordova-plugin-alipay",
+      "directUrl": "https://raw.githubusercontent.com/DreamMoon/cordova-plugin-alipay/master/package.json"
+    }
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/DreamMoon/cordova-plugin-alipay.git#892540688b75295552b520a39572ea6e864331d0",
+  "_shasum": "b0b5e91058220ad723bfd4a567a6f5301080dabc",
+  "_shrinkwrap": null,
+  "_spec": "https://github.com/DreamMoon/cordova-plugin-alipay.git",
+  "_where": "E:\\ionic2_tabs-master\\node_modules",
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/DreamMoon/cordova-plugin-alipay"
+  },
+  "cordova": {
+    "id": "cordova-plugin-offbye-alipay",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "dependencies": {},
+  "description": "Makes your Cordova application enable to use the Alipay SDK",
+  "devDependencies": {},
+  "engines": [
+    {
+      "name": "cordova-android",
+      "version": ">=4"
+    },
+    {
+      "name": "cordova-plugman",
+      "version": ">=4.2.0"
+    }
+  ],
+  "gitHead": "892540688b75295552b520a39572ea6e864331d0",
+  "homepage": "https://github.com/DreamMoon/cordova-plugin-alipay",
+  "keywords": [
+    "cordova",
+    "chromium",
+    "alipay",
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
+  "license": "Apache 2.0",
+  "name": "cordova-plugin-offbye-alipay",
+  "optionalDependencies": {},
+  "readme": "## cordova-plugin-alipay ##\r\n\r\nMakes your Cordova application enable to use the [Alipay SDK](https://doc.open.alipay.com/docs/doc.htm?spm=a219a.7629140.0.0.hT44dE&treeId=54&articleId=104509&docType=1)\r\nfor mobile payment with Alipay App or Mobile Web. Requires cordova-android 4.0 or greater.\r\n\r\n### ChangeLogs\r\n  本cordova插件是基于支付宝App支付SDK的Demo实现\r\n - 升级支付宝SDK版本到20160825；\r\n - 修改了一些bug;\r\n - 支持Android和iOS Alipay SDK\r\n###主要功能\r\n\r\n - 主要功能是：服务器把订单信息签名后，调用该插件调用支付宝sdk进行支付，支付完成后如支付成功，如果是9000状态，还要去服务端去验证是否真正支付\r\n\r\n### Install 安装\r\n\r\nThe following directions are for cordova-cli (most people).  \r\n\r\n* Open an existing cordova project, with cordova-android 4.0.0+, and using the latest CLI. TBS X5  variables can be configured as an option when installing the plugin\r\n* Add this plugin\r\n\r\n  ```sh\r\n  cordova plugin add https://github.com/DreamMoon/cordova-plugin-alipay.git --variable PARTNER_ID=[你的商户PID可以在账户中查询]\r\n  ```\r\n  （对于android，可以不传PARTNER_ID）\r\n\r\n   offline：下载后再进行安装 `cordova plugin add  YOUR_DIR`\r\n\r\n### 支持平台\r\n\r\n\t\tAndroid IOS\r\n\r\n### Android API\r\n\r\n* js调用插件方法\r\n\r\n```js\r\n\r\n    //第一步：订单在服务端签名生成订单信息，具体请参考官网进行签名处理\r\n    var payInfo  = \"xxxx\";\r\n\r\n    //第二步：调用支付插件        \t\r\n    cordova.plugins.AliPay.pay(payInfo,function success(e){},function error(e){});\r\n\r\n\t //e.resultStatus  状态代码  e.result  本次操作返回的结果数据 e.memo 提示信息\r\n\t //e.resultStatus  9000  订单支付成功 ;8000 正在处理中  调用function success\r\n\t //e.resultStatus  4000  订单支付失败 ;6001  用户中途取消 ;6002 网络连接出错  调用function error\r\n\t //当e.resultStatus为9000时，请去服务端验证支付结果\r\n\t \t\t\t/**\r\n\t\t\t\t * 同步返回的结果必须放置到服务端进行验证（验证的规则请看https://doc.open.alipay.com/doc2/\r\n\t\t\t\t * detail.htm?spm=0.0.0.0.xdvAU6&treeId=59&articleId=103665&\r\n\t\t\t\t * docType=1) 建议商户依赖异步通知\r\n\t\t\t\t */\r\n\r\n```\r\n\r\n### ionic2 使用该插件的说明\r\n  该cordova插件是源于 https://github.com/offbye/cordova-plugin-alipay 。\r\n - 在ionic2使用该插件的过程中所出现的问题进行解决（AliPay对象不存在的问题）：\r\n  修改plugin.xml文件中的：\r\n```xml\r\n\r\n   <js-module src=\"www/AliPay.js\" name=\"AliPay\">\r\n     \t<!-- <clobbers target=\"cordova.plugins.AliPay\" /> -->\r\n\t    <clobbers target=\"AliPay\" />\r\n    </js-module>\r\n\r\n```\r\n  \r\n - 修复ios中路径出错问题：\r\n  plugin.xml\r\n```xml\r\n\r\n   <!-- <resource-file src=\"src/lib/AlipaySDK.bundle\"/> -->\r\n        <resource-file src=\"src/ios/lib/AlipaySDK.bundle\"/>\r\n\r\n```\r\n\r\n###在ionic2中使用该插件\r\n - 1、按照上述的说明到ionic2项目中安装该插件；\r\n - 2、在需要使用该插件的.ts文件中的开头处（一般在 import 语句下面、@Commponent装饰器语句上面）声明AliPay对象：\r\n```ts\r\n\r\n   declare var AliPay: any;\r\n\r\n```\r\n - 3、正式使用：在需要调用支付宝支付的地方，加入如下语句：\r\n```ts\r\n\t//第一步：订单在服务端签名生成订单信息，具体请参考官网进行签名处理\r\n\tlet payInfo  = \"xxx\";\r\n\r\n\t//第二步：调用支付插件\r\n\tAliPay.pay(payInfo,\r\n\t  function success(e){\r\n\t    alert('success!');\r\n\t  },function error(e){\r\n\t    alert('error!');\r\n\t  });\r\n```\r\n\r\n###应用该插件后ionic2打包为ios的注意事项\r\n - 应用该插件后，ionic2直接打包为android，支付宝支付的功能在app上使用是没有什么问题的。但是在ios上却没有那么顺利了，可能会出现这样的错误（在ionic build ios 或 xcode运行app项目的过程中）：\r\n```\r\n\tUndefined symbols for architecture i386: “_deflate”, referenced from \r\n```\r\n\r\n - 解决方法的步骤如下：\r\n1.go to target section；\r\n2.Build Phases tab；\r\n3.Link Binaries With Libraries；\r\n4.click on + button；\r\n5.search libz.tbd (or libz.dylib)；\r\n6.click on add button.\r\n\r\n - 参考：http://stackoverflow.com/questions/18053546/undefined-symbols-for-architecture-i386-deflate-referenced-from-platcompres \r\n \r\n \r\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DreamMoon/cordova-plugin-alipay.git"
+  },
+  "version": "1.0.1"
+}
