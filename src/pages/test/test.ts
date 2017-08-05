@@ -1,7 +1,9 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import 'rxjs/add/operator/map';
-import {TestService} from "./TestService";
-import {FileObj} from "../../model/FileObj";
+import { TestService } from "./TestService";
+import { FileObj } from "../../model/FileObj";
+
+declare var AliPay: any;
 
 @Component({
   selector: 'page-test',
@@ -17,6 +19,7 @@ export class TestPage {
 
   ngAfterViewInit() {
 
+
   }
 
   getFileData() {
@@ -25,7 +28,24 @@ export class TestPage {
     });
   }
 
-
-
+  /**
+   * 支付宝支付
+   */
+  alipays() {
+    //第二步：调用支付插件
+    AliPay.pay({
+      tradeNo: new Date().getTime(),
+      subject: "测试标题",
+      body: "我的两分钱啊",
+      price: 0.02,
+      notifyUrl: "www.baidu.com"
+    },
+      function success(e) {
+        alert('success!');
+      }, function error(e) {
+        alert('error!');
+        console.info(e);
+      });
+  }
 
 }

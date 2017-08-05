@@ -102,13 +102,13 @@
     <plugin name="cordova-plugin-file-transfer" spec="~1.6.2" />
     <plugin name="cordova-plugin-inappbrowser" spec="~1.7.0" />
     <plugin name="cordova-plugin-network-information" spec="~1.3.2" />
+    <plugin name="cordova-plugin-offbye-alipay" spec="git+https://github.com/DreamMoon/cordova-plugin-alipay.git">
+        <variable name="PARTNER_ID" value="2088711643087441" />
+    </plugin>
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
     <plugin name="cordova-plugin-statusbar" spec="2.2.1" />
     <plugin name="cordova-plugin-whitelist" spec="1.3.1" />
     <plugin name="cordova-plugin-x-toast" spec="~2.6.0" />
     <plugin name="install" spec="https://github.com/weelion/phonegap-plugin-install" />
     <plugin name="ionic-plugin-keyboard" spec="~2.2.1" />
-    <plugin name="cordova-plugin-offbye-alipay" spec="https://github.com/DreamMoon/cordova-plugin-alipay.git">
-        <variable name="PARTNER_ID" value="2088711643087441" />
-    </plugin>
 </widget>

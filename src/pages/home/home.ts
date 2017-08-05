@@ -6,7 +6,6 @@ import { NavigationModalPage } from "./navigation-modal/navigation-modal";
 import { LocationSearchModalPage } from "./location-search-modal/location-search-modal";
 import { HttpService } from "../../providers/HttpService";
 import { MARKER_URL } from "../../providers/Constants";
-import { Subject } from "rxjs";
 
 declare var AMap;
 
@@ -25,6 +24,7 @@ export class HomePage {
   locationLng: any;
   locationLat: any;
   searchMarkers: any = [];
+  clickMarkers: any = [];
   url: string = MARKER_URL;
   constructor(private modalCtrl: ModalController,
     private viewCtrl: ViewController,
@@ -89,19 +89,18 @@ export class HomePage {
           console.log("remove marker:" + this.searchMarkers[i].title);
           that.map.remove(this.searchMarkers[i]);
         }
-
         let newmarker = new AMap.Marker({
           map: that.map,
           id: marker.id,
-          icon: "https://webapi.amap.com/theme/v1.3/markers/n/mark_r.png",
+          icon: "./assets/img/pin.png",
           position: new AMap.LngLat(marker.location.lng, marker.location.lat),
           extData: marker,
           title: marker.name
         });
         this.searchMarkers.push(newmarker);
+        //that.map.setFitView();
         newmarker.setMap(that.map);
-        that.map.setFitView();
-        that.map.setZoom(13);
+        that.map.setZoomAndCenter(13, [marker.location.lng, marker.location.lat]);
       }
     });
   }
@@ -118,7 +117,7 @@ export class HomePage {
       that.marker = new AMap.Marker({
         map: that.map,
         //icon: "https://webapi.amap.com/theme/v1.3/markers/n/mark_r.png",
-        icon: "./assets/img/pin.png",
+        icon: "./assets/img/location.png",
         position: new AMap.LngLat(position['lng'], position['lat']),
 
       });
@@ -211,7 +210,7 @@ export class HomePage {
     let marker = new AMap.Marker({
       iconLabel: '1',
       map: this.map,
-      draggable: true,
+      icon: "http://webapi.amap.com/theme/v1.3/markers/n/mark_b.png",
       position: [d.location.getLng(), d.location.getLat()]
     });
 
@@ -238,10 +237,17 @@ export class HomePage {
     // info.push('<div><button id="dh">导航</button></div>');
     info.push('<div class="row"><div class="col col-50">' + parkingLotName + '</div><div class="col col-50">距离目的地:' + distances.toString() + '公里</div></div>');
     info.push('<button ion-button>' + parkingLotProperty + '</button>&nbsp;&nbsp;<button ion-button>' + ServiceTime + '</button>');
-    info.push('<div class="row"><div class="col col-70">空闲车位数：' + berthNo + ' |收费标准:' + accountingStandards + '元/小时</div><div class="col col-30" id="navigationButton"><button id="navigation">导航</button></div></div>');
+    info.push('<div class="row"><div class="col col-70">空闲车位：' + berthNo + ' | ' + accountingStandards + '元/小时</div><div class="col col-30" id="navigationButton"><button id="navigation">导航</button></div></div>');
 
     AMap.event.addListener(marker, 'click', (e) => {
       //let divstr = '<button id="daohangButton" (click)="mapNavigation(1)">去这里</button>';
+      // marker['icon'] = "http://webapi.amap.com/theme/v1.3/markers/n/mark_r.png";
+      for (let i = 0; i < this.clickMarkers.length; i++) {
+        this.clickMarkers[i].setIcon("http://webapi.amap.com/theme/v1.3/markers/n/mark_b.png");
+      }
+
+      marker.setIcon("http://webapi.amap.com/theme/v1.3/markers/n/mark_r.png");
+      this.clickMarkers.push(marker);
       document.getElementById("markerinfo").innerHTML = info.join("<br/>");
       document.getElementById("markerinfo").style.display = "block";
       let bt = document.getElementById("navigation");
