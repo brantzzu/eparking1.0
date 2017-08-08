@@ -19,13 +19,32 @@
   </ion-list>
   <ion-list>
     <ion-item>
+      <ion-icon name="car" item-left color="primary"></ion-icon>
+      车辆管理
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item (click)="viewParkingRecord()">
+      <ion-icon name="list-box" item-left color="primary"></ion-icon>
+      停车记录
+      <ion-icon name='ios-arrow-forward' item-right></ion-icon>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item>
+      <ion-icon name="logo-vimeo" item-left color="primary"></ion-icon>
+      VIP服务
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item>
       <ion-icon name="settings" item-left color="primary"></ion-icon>
       设置
     </ion-item>
   </ion-list>
   <ion-list>
     <ion-item (click)="exitSoftware()" hideWhen="ios">
-	  <ion-icon name="log-out" item-left color="danger"></ion-icon>
+      <ion-icon name="log-out" item-left color="danger"></ion-icon>
       退出软件
     </ion-item>
     <ion-item (click)="loginOut()">
@@ -35,7 +54,7 @@
   </ion-list>
   <ion-list>
     <ion-item (click)="about()">
-      <ion-icon name="information-circle" item-left  color="secondary"></ion-icon>
+      <ion-icon name="information-circle" item-left color="secondary"></ion-icon>
       关于
       <ion-icon name='ios-arrow-forward' item-right></ion-icon>
     </ion-item>

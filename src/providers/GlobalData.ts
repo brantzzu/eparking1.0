@@ -1,7 +1,5 @@
-/**
- * Created by yanxiaojun on 2017/4/13.
- */
-import {Injectable} from '@angular/core';
+
+import { Injectable } from '@angular/core';
 
 @Injectable()
 export class GlobalData {

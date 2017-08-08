@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { Platform, NavController, ModalController, AlertController } from 'ionic-angular';
 import { MineEditPage } from './mine-edit/mine-edit';
 import { MineEditAvatarModalPage } from './mine-edit-avatar-modal/mine-edit-avatar-modal';
+import { ParkingRecordPage } from './mine-parking-record/mine-parking-record';
 import { UserInfo } from "../../model/UserInfo";
 import { AboutPage } from "./about/about";
 import { LoginPage } from "../login/login";
@@ -42,6 +43,10 @@ export class MinePage {
 
   edit() {
     this.navCtrl.push(MineEditPage, { 'userInfo': this.userInfo, 'avatarPath': this.avatarPath });
+  }
+
+  viewParkingRecord() {
+    this.navCtrl.push(ParkingRecordPage, { 'userInfo': this.userInfo });
   }
 
   setting() {

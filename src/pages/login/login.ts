@@ -29,7 +29,7 @@ export class LoginPage {
     private events: Events,
     private loginService: LoginService) {
     this.loginForm = this.formBuilder.group({
-      username: ['yanxiaojun617', [Validators.required, Validators.minLength(4)]],// 第一个参数是默认值
+      username: ['13638010000', [Validators.required, Validators.minLength(4)]],// 第一个参数是默认值
       password: ['123456', [Validators.required, Validators.minLength(4)]]
     });
   }

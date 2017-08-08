@@ -23,11 +23,11 @@ export class LoginService {
       user: {
         id: 1,
         username: user.username,
-        name: '小军',
-        email: 'yanxiaojun617@163.com',
-        phone: '18688498342',
+        name: 'Admin',
+        email: 'Admin@eparking.com',
+        phone: '13638000000',
         avatarId: '',
-        description: '有图有真相，一本正经的胡说八道..'
+        description: '13638010000'
       }
     };
     return Observable.create((observer) => {

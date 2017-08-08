@@ -28557,6 +28557,10 @@ page-feed-back .add {
   border: solid 1px #8c8c8c;
 }
 
+page-mine-parking-record ion-row.active {
+  background-color: #f5f5f5;
+}
+
 page-show-pictures .delete-picture {
   position: absolute;
   right: 5px;

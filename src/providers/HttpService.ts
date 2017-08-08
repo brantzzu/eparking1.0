@@ -40,6 +40,7 @@ export class HttpService {
   }
 
   public get(url: string, paramMap: any = null): Observable<Response> {
+    console.log(paramMap);
     return this.request(url, new RequestOptions({
       method: RequestMethod.Get,
       headers: new Headers({
@@ -170,6 +171,7 @@ export class HttpService {
   private optionsAddToken(options: RequestOptionsArgs): void {
     let token = this.globalData.token;
     if (options.headers) {
+      console.log("token:" + token);
       options.headers.append('token', token);
     } else {
       options.headers = new Headers({

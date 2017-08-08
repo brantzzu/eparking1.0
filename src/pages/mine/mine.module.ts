@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { IonicModule } from 'ionic-angular';
 import { MinePage } from './mine';
 import { MineEditPage } from './mine-edit/mine-edit';
+import { ParkingRecordPage } from './mine-parking-record/mine-parking-record';
 import { MineEditModalPage } from './mine-edit-modal/mine-edit-modal';
 import { MineEditAvatarModalPage } from './mine-edit-avatar-modal/mine-edit-avatar-modal';
 import { FeedBackPage } from "./feed-back/feed-back";
@@ -18,8 +19,8 @@ import { ChangePasswordPage } from "./change-password/change-password";
 
 @NgModule({
   imports: [IonicModule, SelectPicturePageModule, MapLocationModule],
-  declarations: [MinePage, MineEditPage, MineEditModalPage, MineEditAvatarModalPage, FeedBackPage, AboutPage, UpdateLogPage, ShowPicturesPage, WorkMapPage, SettingPage, ChangePasswordPage],
-  entryComponents: [MinePage, MineEditPage, MineEditModalPage, MineEditAvatarModalPage, FeedBackPage, AboutPage, UpdateLogPage, ShowPicturesPage, WorkMapPage, SettingPage, ChangePasswordPage],
+  declarations: [MinePage, MineEditPage, ParkingRecordPage, MineEditModalPage, MineEditAvatarModalPage, FeedBackPage, AboutPage, UpdateLogPage, ShowPicturesPage, WorkMapPage, SettingPage, ChangePasswordPage,],
+  entryComponents: [MinePage, MineEditPage, ParkingRecordPage, MineEditModalPage, MineEditAvatarModalPage, FeedBackPage, AboutPage, UpdateLogPage, ShowPicturesPage, WorkMapPage, SettingPage, ChangePasswordPage],
   providers: [MineService],
   exports: [IonicModule]
 })
