@@ -26,6 +26,8 @@ export class TabsPage {
   ionViewWillEnter() {
     this.events.subscribe('user:login', (loginInfo: LoginInfo) => {
       let userInfo = loginInfo.user;
+      console.log("subscribe loginInfo user:");
+      console.log(loginInfo.user);
       this.globalData.userId = userInfo.id;
       this.globalData.username = userInfo.username;
       this.globalData.token = loginInfo.access_token;

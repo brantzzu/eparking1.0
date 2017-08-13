@@ -40,7 +40,7 @@ export class HttpService {
   }
 
   public get(url: string, paramMap: any = null): Observable<Response> {
-    console.log(paramMap);
+    console.log("para:" + HttpService.buildURLSearchParams(paramMap));
     return this.request(url, new RequestOptions({
       method: RequestMethod.Get,
       headers: new Headers({
@@ -156,7 +156,7 @@ export class HttpService {
 
   /**
    * url中如果有双斜杠替换为单斜杠
-   * 如:http://88.128.18.144:8080//api//demo.替换后http://88.128.18.144:8080/api/demo
+   * 
    * @param url
    * @returns {string}
    */

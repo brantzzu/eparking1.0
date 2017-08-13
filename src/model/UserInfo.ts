@@ -8,6 +8,7 @@ export interface UserInfo {
   avatarPath: string;
   description: string;
   token: string;
+  password: string;
 }
 export interface LoginInfo {
   access_token: string;

@@ -150,18 +150,18 @@ export class HomePage {
   }
 
   /** add Markers */
-  addMarker(i, d): any {
-    var lngX = d.location.getLng();
-    var latY = d.location.getLat();
-    var markerOption = {
-      map: this.map,
-      icon: "http://webapi.amap.com/theme/v1.3/markers/n/mark_b.png",
-      position: [lngX, latY],
-      topWhenMouseOver: true
-    };
-    this.marker.push([lngX, latY]);
-    return new AMap.Marker(markerOption);
-  }
+  // addMarker(i, d): any {
+  //   var lngX = d.location.getLng();
+  //   var latY = d.location.getLat();
+  //   var markerOption = {
+  //     map: this.map,
+  //     icon: "http://webapi.amap.com/theme/v1.3/markers/n/mark_b.png",
+  //     position: [lngX, latY],
+  //     topWhenMouseOver: true
+  //   };
+  //   this.marker.push([lngX, latY]);
+  //   return new AMap.Marker(markerOption);
+  // }
 
   /**
    * 初始化停车场Marker
@@ -175,7 +175,7 @@ export class HomePage {
         radius: 1000 //范围，默认：500
       });
       this.getMarkers().subscribe((json: any) => {
-        console.info('get markers return date()');
+        //console.info('get markers return date()');
         // console.info(JSON.stringify(json));
         for (let i = 0; i < json.length; i++) {
           let parkingLotLocation = json[i].location;

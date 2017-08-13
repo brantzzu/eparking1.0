@@ -94,6 +94,7 @@ export class MinePage {
       {
         text: '确定',
         handler: () => {
+          this.storage.clear();
           this.platform.exitApp();
         }
       }
