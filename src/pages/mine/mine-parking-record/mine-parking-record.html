@@ -5,44 +5,29 @@
 </ion-header>
 
 <ion-content>
-    <ion-list>
-        <ion-row>
-            <ion-col>
-                <strong>进场时间</strong>
-            </ion-col>
-            <ion-col>
-                <strong>出场时间</strong>
-            </ion-col>
-            <ion-col>
-                <strong>停车场</strong>
-            </ion-col>
-            <ion-col>
-                <strong>停车费</strong>
-            </ion-col>
-            <ion-col>
-                <strong>付费状态</strong>
-            </ion-col>
-        </ion-row>
-    </ion-list>
-    <ion-list>
-        <ion-item *ngFor="let item of apidata">
-            <ion-row>
-                <ion-col>
-                    {{item.enterTime}}
-                </ion-col>
-                <ion-col>
-                    {{item.leaveTime}}
-                </ion-col>
-                <ion-col>
-                    {{item.parkingLot}}
-                </ion-col>
-                <ion-col>
-                    {{item.parkingFee}}
-                </ion-col>
-                <ion-col>
-                    {{item.payStatus}}
-                </ion-col>
-            </ion-row>
-        </ion-item>
-    </ion-list>
+    <div *ngIf="noParkingRecord;else parkingRecord">
+        <h3> 暂无停车记录</h3>
+    </div>
+    <ng-template #parkingRecord>
+        <ion-list>
+            <ion-item *ngFor="let item of apidata">
+                <ion-row>
+                    <ion-col>
+                        {{item.enterTime}}
+                    </ion-col>
+                    <ion-col>
+                        {{item.leaveTime}}
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        {{item.parkingLot}}
+                    </ion-col>
+                    <ion-col>
+                        停车费：{{item.parkingFee}}
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+        </ion-list>
+    </ng-template>
 </ion-content>

@@ -13,6 +13,8 @@ export class ParkingRecordPage {
     userInfo: UserInfo;
     data: any;
     apidata: any;
+    noParkingRecord: boolean = false;
+
 
     constructor(private modalCtrl: ModalController,
         private params: NavParams,
@@ -29,6 +31,9 @@ export class ParkingRecordPage {
                 return res.json();
             }).subscribe((json: any) => {
                 this.apidata = json;
+                if (json.length < 1) {
+                    this.noParkingRecord = true;
+                }
             });
 
         } else {

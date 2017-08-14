@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
-
+import { CallNumber } from '@ionic-native/call-number';
 import { Platform, NavController, ModalController, AlertController } from 'ionic-angular';
 import { MineEditPage } from './mine-edit/mine-edit';
 import { MineEditAvatarModalPage } from './mine-edit-avatar-modal/mine-edit-avatar-modal';
@@ -27,6 +27,7 @@ export class MinePage {
     private storage: Storage,
     private helper: Helper,
     private modalCtrl: ModalController,
+    private CallNumber: CallNumber,
     private alertCtrl: AlertController) {
 
   }
@@ -113,6 +114,36 @@ export class MinePage {
     modal.onDidDismiss(data => {
       data && (this.avatarPath = data.avatarPath)
     });
+  }
+
+  /**
+   * 拨打电话
+   */
+  callConfirm(number) {
+    let confirm = this.alertCtrl.create({
+      title: '拨打VIP服务电话',
+      message: '您确定需要拨打' + number + '吗？',
+      buttons: [
+        {
+          text: '取消',
+          handler: () => {
+          }
+        },
+        {
+          text: '确定',
+          handler: () => {
+            this.call(number);
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+
+  call(number) {
+    this.CallNumber.callNumber(number, true)
+      .then(() => console.log('Launched dialer!'))
+      .catch(() => console.log('Error launching dialer'));
   }
 
 }
