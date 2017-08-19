@@ -5,6 +5,7 @@ import { Platform, NavController, ModalController, AlertController } from 'ionic
 import { MineEditPage } from './mine-edit/mine-edit';
 import { MineEditAvatarModalPage } from './mine-edit-avatar-modal/mine-edit-avatar-modal';
 import { ParkingRecordPage } from './mine-parking-record/mine-parking-record';
+import { ManageCarPage } from './manage-car/manage-car';
 import { UserInfo } from "../../model/UserInfo";
 import { AboutPage } from "./about/about";
 import { LoginPage } from "../login/login";
@@ -45,9 +46,20 @@ export class MinePage {
   edit() {
     this.navCtrl.push(MineEditPage, { 'userInfo': this.userInfo, 'avatarPath': this.avatarPath });
   }
+  /**
+   * 停车记录
+   */
 
   viewParkingRecord() {
     this.navCtrl.push(ParkingRecordPage, { 'userInfo': this.userInfo });
+  }
+
+  /**
+   * 车辆管理
+   */
+  manageCar() {
+    this.navCtrl.push(ManageCarPage, { 'userInfo': this.userInfo });
+
   }
 
   setting() {

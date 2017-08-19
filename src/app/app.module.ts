@@ -26,7 +26,7 @@ import { HttpService } from "../providers/HttpService";
 import { FileService } from "../providers/FileService";
 import { Helper } from "../providers/Helper";
 import { Utils } from "../providers/Utils";
-import { TestModule } from "../pages/test/test.module";
+import { IndexModule } from "../pages/index/index.module";
 import { HttpModule } from "@angular/http";
 import { DemoModule } from "../pages/demo/demo.module";
 import { GlobalData } from "../providers/GlobalData";
@@ -63,7 +63,7 @@ class FunDebugErrorHandler implements ErrorHandler {
     HomeModule,
     DemoModule,
     MineModule,
-    TestModule
+    IndexModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [MyApp],

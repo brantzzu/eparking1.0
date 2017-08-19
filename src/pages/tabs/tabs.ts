@@ -3,7 +3,7 @@ import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
 import { MinePage } from '../mine/mine';
 import { Tabs, Events } from "ionic-angular";
-import { TestPage } from "../test/test";
+import { IndexPage } from "../index/index";
 import { DemoPage } from "../demo/demo";
 import { GlobalData } from "../../providers/GlobalData";
 import { Helper } from "../../providers/Helper";
@@ -14,7 +14,7 @@ import { LoginInfo } from "../../model/UserInfo";
 })
 export class TabsPage {
   @ViewChild('mainTabs') tabs: Tabs;
-  testRoot: any = TestPage;
+  testRoot: any = IndexPage;
   demoRoot: any = DemoPage;
   homeRoot: any = HomePage;
   mineRoot: any = MinePage;
@@ -26,8 +26,8 @@ export class TabsPage {
   ionViewWillEnter() {
     this.events.subscribe('user:login', (loginInfo: LoginInfo) => {
       let userInfo = loginInfo.user;
-      console.log("subscribe loginInfo user:");
-      console.log(loginInfo.user);
+      // console.log("subscribe loginInfo user:");
+      // console.log(loginInfo.user);
       this.globalData.userId = userInfo.id;
       this.globalData.username = userInfo.username;
       this.globalData.token = loginInfo.access_token;

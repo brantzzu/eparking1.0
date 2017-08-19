@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>倚泊</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- <button ion-button block (click)="getFileData()">请求照片</button>
+  <page-select-picture [max]="6" [(fileObjList)]="fileObjList"></page-select-picture>
+  <button ion-button block (click)="alipays()">测试支付宝支付</button> -->
+  <div class="index-page">
+    <ion-slides #Slider loop="true" autoplay="3000" *ngIf="slideinfos.length > 1">
+      <ion-slide *ngFor="let slide of slideinfos">
+        <img [src]="slide.image" class="slide-image" />
+        <!-- <h2 class="slide-title" [innerHTML]="slide.title"></h2> -->
+      </ion-slide>
+      <!-- <ion-slide>
+        <ion-toolbar>
+        </ion-toolbar>
+        <img src="./assets/img/eparking2.jpg" class="slide-image" />
+        <h2 class="slide-title">Ready to Play?</h2>
+        <button ion-button large clear icon-end color="primary">
+        Continue
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+      </ion-slide> -->
+    </ion-slides>
+    <hr>
+    <button ion-button round full icon-right (click)="goToParkingLot()">进入智能停车
+    <ion-icon name='ios-arrow-forward' item-right></ion-icon>
+    </button>
+  </div>
+  <hr>
+  <div id="functionPanel" class="classification">
+    <div class="cbox">
+      <div class="icon">
+        <img src="./assets/img/vip64.png" />
+      </div>
+      <p>VIP停车</p>
+    </div>
+    <div class="cbox">
+      <div class="icon">
+        <img src="./assets/img/key64.png" />
+      </div>
+      <p>代驾</p>
+    </div>
+    <div class="cbox">
+      <div class="icon">
+        <img src="./assets/img/car-repair64.png" />
+      </div>
+      <p>汽车维修</p>
+    </div>
+    <div class="cbox">
+      <div class="icon">
+        <img src="./assets/img/trailer64.png" />
+      </div>
+      <p>道路救援</p>
+    </div>
+    <div class="cbox">
+      <div class="icon">
+        <img src="./assets/img/car-wash64.png" />
+      </div>
+      <p>洗车</p>
+    </div>
+    <div class="cbox">
+      <div class="icon">
+        <img src="./assets/img/gas-station64.png" />
+      </div>
+      <p>加油</p>
+    </div>
+    <div class="cbox">
+      <div class="icon">
+        <img src="./assets/img/diagnostic64.png" />
+      </div>
+      <p>汽车装饰</p>
+    </div>
+    <div class="cbox">
+      <div class="icon">
+        <img src="./assets/img/book.png" />
+      </div>
+      <p>用车百科</p>
+    </div>
+  </div>
+</ion-content>

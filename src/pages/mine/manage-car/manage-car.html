@@ -1,0 +1,101 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>管理车辆</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div>
+        <img src="./assets/img/car.jpg" style="width:100%">
+    </div>
+    <div *ngIf="threeCarsBind;else doBindCar">
+        <ion-list>
+            <ion-item-sliding *ngFor="let item of bindCars">
+                <ion-item>
+                    <ion-row>
+                        <ion-col>
+                            {{item.c1}}
+                        </ion-col>
+                        <ion-col>
+                            {{item.c2}}
+                        </ion-col>
+                        <ion-col>
+                            {{item.c3}}
+                        </ion-col>
+                        <ion-col>
+                            {{item.c4}}
+                        </ion-col>
+                        <ion-col>
+                            {{item.c5}}
+                        </ion-col>
+                        <ion-col>
+                            {{item.c6}}
+                        </ion-col>
+                        <ion-col>
+                            {{item.c7}}
+                        </ion-col>
+                    </ion-row>
+                </ion-item>
+                <ion-item-options>
+                    <button ion-button color="danger" (click)="removeItem(item.carNo)"><ion-icon name="trash"></ion-icon>删除</button>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+    </div>
+    <ng-template #doBindCar>
+        <ion-list>
+            <ion-item-sliding *ngFor="let item of bindCars">
+                <ion-item>
+                    <ion-row>
+                        <ion-col>
+                            {{item.c1}}
+                        </ion-col>
+                        <ion-col>
+                            {{item.c2}}
+                        </ion-col>
+                        <ion-col>
+                            {{item.c3}}
+                        </ion-col>
+                        <ion-col>
+                            {{item.c4}}
+                        </ion-col>
+                        <ion-col>
+                            {{item.c5}}
+                        </ion-col>
+                        <ion-col>
+                            {{item.c6}}
+                        </ion-col>
+                        <ion-col>
+                            {{item.c7}}
+                        </ion-col>
+                    </ion-row>
+                </ion-item>
+                <ion-item-options>
+                    <button ion-button color="danger" (click)="removeItem(item.carNo)"><ion-icon name="trash"></ion-icon>删除</button>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+        <div>
+            <h5 style="text-align:center">您还可以绑定{{leftBindCars}}个车牌号</h5>
+        </div>
+        <hr>
+        <div>
+            <h4 style="text-align:center">请输入真实的车牌号</h4>
+        </div>
+        <form [formGroup]="bindCarForm" (ngSubmit)="bindCar(bindCarForm.value)">
+            <div class="row">
+                <input class="col" type="text" maxlength="1" formControlName="c1" />
+                <input class="col" type="text" maxlength="1" formControlName="c2" />
+                <input class="col" type="text" maxlength="1" formControlName="c3" />
+                <input class="col" type="text" maxlength="1" formControlName="c4" />
+                <input class="col" type="text" maxlength="1" formControlName="c5" />
+                <input class="col" type="text" maxlength="1" formControlName="c6" />
+                <input class="col" type="text" maxlength="1" formControlName="c7" />
+            </div>
+            <br>
+            <div padding-horizontal>
+                <button ion-button block type="submit" [disabled]="!bindCarForm.valid||submitted">绑定车牌</button>
+            </div>
+        </form>
+    </ng-template>
+</ion-content>

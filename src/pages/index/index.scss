@@ -1,0 +1,36 @@
+page-index {
+    .index-page {
+    .toolbar-background {
+    background: #fff;
+    border-color: transparent;
+  }
+
+  .slide-zoom {
+    height: 100%;
+  }
+
+  .slide-title {
+    margin-top: 0.8rem;
+  }
+
+  .slide-image {
+    max-height: 40%;
+    max-width: 100%;
+    margin: 10px 0;
+  }
+  
+}
+#functionPanel{ 
+	padding-left:0!important; 
+	padding-right:0!important; 
+}
+.classification{width:100%; height:auto; }
+.classification div{ width:95%; margin:auto;}
+.classification .cbox{ width:25%; padding-top:10px; float:left;}
+.classification .icon{ width:60px; height:60px;  margin:auto; }
+.classification .icon img{width: 50px; height: 50px;}
+.classification p{ font-size:12px; text-align:center; line-height:15px; color: #404040;}
+
+}
+
+

@@ -28477,6 +28477,64 @@ page-navigation-modal .amap-call {
   display: none;
 }
 
+page-index .index-page .toolbar-background {
+  background: #fff;
+  border-color: transparent;
+}
+
+page-index .index-page .slide-zoom {
+  height: 100%;
+}
+
+page-index .index-page .slide-title {
+  margin-top: 0.8rem;
+}
+
+page-index .index-page .slide-image {
+  max-height: 40%;
+  max-width: 100%;
+  margin: 10px 0;
+}
+
+page-index #functionPanel {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+page-index .classification {
+  width: 100%;
+  height: auto;
+}
+
+page-index .classification div {
+  width: 95%;
+  margin: auto;
+}
+
+page-index .classification .cbox {
+  width: 25%;
+  padding-top: 10px;
+  float: left;
+}
+
+page-index .classification .icon {
+  width: 60px;
+  height: 60px;
+  margin: auto;
+}
+
+page-index .classification .icon img {
+  width: 50px;
+  height: 50px;
+}
+
+page-index .classification p {
+  font-size: 12px;
+  text-align: center;
+  line-height: 15px;
+  color: #404040;
+}
+
 page-find-password .verification {
   position: absolute;
   right: 0;
@@ -28555,6 +28613,11 @@ page-feed-back .add {
   color: #8c8c8c;
   text-align: center;
   border: solid 1px #8c8c8c;
+}
+
+page-manage-car .col {
+  width: 12.5%;
+  float: left;
 }
 
 page-mine-parking-record ion-row.active {
