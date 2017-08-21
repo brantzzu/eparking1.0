@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { TestService } from "./TestService";
 // import { FileObj } from "../../model/FileObj";
-import { Slides, NavController } from 'ionic-angular';
+import { Slides, NavController, Tabs } from 'ionic-angular';
 import { HomePage } from '../home/home';
 
 declare var AliPay: any;
@@ -13,7 +13,9 @@ declare var AliPay: any;
 })
 export class IndexPage {
   //fileObjList: FileObj[] = [];
+  tab: Tabs;
   @ViewChild(Slides) slides: Slides;
+
   slideinfos = [
     {
       title: "倚泊智能停车",
@@ -35,6 +37,7 @@ export class IndexPage {
   constructor(public testService: TestService,
     private navCtrl: NavController
   ) {
+    this.tab = this.navCtrl.parent;
 
   }
   ionViewDidEnter() {
@@ -55,7 +58,8 @@ export class IndexPage {
 
   }
   goToParkingLot() {
-    this.navCtrl.push(HomePage);
+    //this.navCtrl.push(HomePage);
+    this.tab.select(1);
   }
 
   // getFileData() {
