@@ -137,5 +137,8 @@
     <plugin name="cordova-plugin-x-toast" spec="~2.6.0" />
     <plugin name="install" spec="https://github.com/weelion/phonegap-plugin-install" />
     <plugin name="ionic-plugin-keyboard" spec="~2.2.1" />
+    <plugin name="jpush-phonegap-plugin" spec="~3.1.4">
+        <variable name="APP_KEY" value="e81742121133ab99cadb41ad" />
+    </plugin>
     <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
 </widget>

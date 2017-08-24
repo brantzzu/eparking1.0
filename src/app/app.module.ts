@@ -7,7 +7,7 @@ import { TabModule } from "../pages/tabs/tab.module";
 import { LoginModule } from '../pages/login/login.module';
 import { HomeModule } from '../pages/home/home.module';
 import { MineModule } from '../pages/mine/mine.module';
-
+import { MessageModule } from '../pages/message/message.module';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AppVersion } from '@ionic-native/app-version';
@@ -63,7 +63,8 @@ class FunDebugErrorHandler implements ErrorHandler {
     HomeModule,
     DemoModule,
     MineModule,
-    IndexModule
+    IndexModule,
+    MessageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [MyApp],

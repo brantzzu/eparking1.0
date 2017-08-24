@@ -37,7 +37,7 @@ export class RegisterPage {
       'password': this.registerForm.value.password
     };
     this.httpService.post('http://quants.sufe.edu.cn/register', param).subscribe(data => {
-      console.log("data body:" + data['_body']);
+      // console.log("data body:" + data['_body']);
       this.httpResponseData = data['_body'];
       if (this.httpResponseData == "registeredSuccess") {
         this.nativeService.showToast('注册成功！');

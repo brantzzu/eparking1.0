@@ -61,7 +61,8 @@
         "mx.ferreyra.callnumber": "~0.0.2",
         "rxjs": "5.4.0",
         "sw-toolbox": "3.6.0",
-        "zone.js": "0.8.12"
+        "zone.js": "0.8.12",
+        "jpush-phonegap-plugin": "~3.1.4"
     },
     "devDependencies": {
         "@ionic/app-scripts": "1.3.7",
@@ -91,7 +92,10 @@
             "cordova-plugin-x-toast": {},
             "install": {},
             "ionic-plugin-keyboard": {},
-            "mx.ferreyra.callnumber": {}
+            "mx.ferreyra.callnumber": {},
+            "jpush-phonegap-plugin": {
+                "APP_KEY": "e81742121133ab99cadb41ad"
+            }
         }
     }
 }

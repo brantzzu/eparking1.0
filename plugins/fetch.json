@@ -155,12 +155,12 @@
     },
     "jpush-phonegap-plugin": {
         "source": {
-            "type": "local",
-            "path": "D:\\jpush-phonegap-plugin-master"
+            "type": "registry",
+            "id": "jpush-phonegap-plugin"
         },
         "is_top_level": true,
         "variables": {
-            "APP_KEY": "a0becaf86f63fcdc3bd071e5"
+            "APP_KEY": "e81742121133ab99cadb41ad"
         }
     },
     "cordova-plugin-appminimize": {

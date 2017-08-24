@@ -48,7 +48,6 @@ export class ManageCarPage {
                 this.bindCars = json;
                 if (json.length >= 3) {
                     this.threeCarsBind = true;
-
                 }
             });
 
@@ -81,7 +80,6 @@ export class ManageCarPage {
             }
 
         }
-
         // console.log("bindCars:");
         // console.log(this.bindCars[0]['carNo']);
     }

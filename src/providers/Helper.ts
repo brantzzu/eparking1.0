@@ -6,6 +6,10 @@ import { Observable } from "rxjs";
 import { DEFAULT_AVATAR, FILE_SERVE_URL } from "./Constants";
 import { FileService } from "./FileService";
 import { Result } from "../model/Result";
+import { App } from 'ionic-angular';
+import { MessagePage } from "../pages/message/message"
+//import { ViewChild } from '@angular/core';
+import { HttpService } from "../providers/HttpService";
 
 /**
  * Helper类存放和业务有关的公共方法
@@ -13,9 +17,13 @@ import { Result } from "../model/Result";
  */
 @Injectable()
 export class Helper {
+  httpResponseData: any;
 
-  constructor(private jPush: JPush,
+  constructor(
+    public app: App,
+    private jPush: JPush,
     private fileService: FileService,
+    private httpService: HttpService,
     private nativeService: NativeService) {
   }
 
@@ -73,17 +81,35 @@ export class Helper {
       //  window['plugins'].jPushPlugin.resetBadge();
       let content = this.nativeService.isIos() ? event['aps'].alert : event['alert'];
       console.log("jpush.openNotification" + content);
+      //this.navCtrl.push(MessagePage);
+      this.app.getActiveNav().push(MessagePage);
     }, false);
 
     //收到通知时会触发该事件
     document.addEventListener("jpush.receiveNotification", event => {
       let content = this.nativeService.isIos() ? event['aps'].alert : event['alert'];
-      console.log("jpush.receiveNotification" + content);
+      let url = "http://quants.sufe.edu.cn/postMessage";
+      let time = new Date();
+      let param = { publicTime: time.toLocaleDateString(), messageContent: content };
+      this.httpService.post(url, param).subscribe(result => {
+        this.httpResponseData = result['_body'];
+        if (this.httpResponseData == "postSuccess") {
+          console.log("postMessageSuccess!");
+
+        } else {
+          console.log("postMessageFailed!");
+        }
+
+      }, error => {
+        console.log(error);
+      });
+      console.log("jpush.receiveNotification:" + content);
     }, false);
 
     //收到自定义消息时触发这个事件
     document.addEventListener("jpush.receiveMessage", event => {
       let message = this.nativeService.isIos() ? event['content'] : event['message'];
+      //Message save
       console.log("jpush.receiveMessage" + message);
     }, false);
 

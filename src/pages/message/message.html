@@ -1,0 +1,13 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>我的通知</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <ion-list>
+        <ion-item text-wrap *ngFor="let msg of msgList">
+            <h2>{{msg.publicTime}}</h2>
+            <p>{{msg.messageContent}}</p>
+        </ion-item>
+    </ion-list>
+</ion-content>

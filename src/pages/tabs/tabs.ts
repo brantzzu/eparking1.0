@@ -5,6 +5,7 @@ import { MinePage } from '../mine/mine';
 import { Tabs, Events } from "ionic-angular";
 import { IndexPage } from "../index/index";
 import { DemoPage } from "../demo/demo";
+import { MessagePage } from "../message/message";
 import { GlobalData } from "../../providers/GlobalData";
 import { Helper } from "../../providers/Helper";
 import { LoginInfo } from "../../model/UserInfo";
@@ -15,7 +16,7 @@ import { LoginInfo } from "../../model/UserInfo";
 export class TabsPage {
   @ViewChild('mainTabs') tabs: Tabs;
   testRoot: any = IndexPage;
-  demoRoot: any = DemoPage;
+  demoRoot: any = MessagePage;
   homeRoot: any = HomePage;
   mineRoot: any = MinePage;
 

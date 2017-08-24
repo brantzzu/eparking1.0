@@ -8,6 +8,7 @@ import { ParkingRecordPage } from './mine-parking-record/mine-parking-record';
 import { ManageCarPage } from './manage-car/manage-car';
 import { UserInfo } from "../../model/UserInfo";
 import { AboutPage } from "./about/about";
+import { AlipayDemoPage } from '../demo/alipay/alipay-demo'
 import { LoginPage } from "../login/login";
 import { Helper } from "../../providers/Helper";
 import { DEFAULT_AVATAR } from "../../providers/Constants";
@@ -117,6 +118,10 @@ export class MinePage {
 
   about() {
     this.navCtrl.push(AboutPage);
+  }
+
+  zhifu() {
+    this.navCtrl.push(AlipayDemoPage);
   }
 
   viewAvatar($event) {
