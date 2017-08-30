@@ -179,5 +179,15 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "cordova-alipay-base": {
+        "source": {
+            "type": "registry",
+            "id": "https://github.com/xueron/cordova-alipay-base"
+        },
+        "is_top_level": true,
+        "variables": {
+            "APP_ID": "2017080508048173"
+        }
     }
 }

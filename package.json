@@ -20,6 +20,7 @@
         "@angular/http": "4.1.3",
         "@angular/platform-browser": "4.1.3",
         "@angular/platform-browser-dynamic": "4.1.3",
+        "@ionic-native/alipay": "^4.1.0",
         "@ionic-native/app-minimize": "^3.10.2",
         "@ionic-native/app-version": "^3.10.2",
         "@ionic-native/call-number": "^4.1.0",
@@ -39,6 +40,7 @@
         "call-number": "^1.0.1",
         "chart.js": "^2.4.0",
         "com.synconset.imagepicker": "https://github.com/Telerik-Verified-Plugins/ImagePicker",
+        "cordova-alipay-base": "git+https://github.com/xueron/cordova-alipay-base.git",
         "cordova-android": "^6.2.3",
         "cordova-plugin-app-version": "~0.1.9",
         "cordova-plugin-appminimize": "https://github.com/tomloprod/cordova-plugin-appminimize.git",
@@ -58,17 +60,17 @@
         "ionic-angular": "3.4.0",
         "ionic-plugin-keyboard": "~2.2.1",
         "ionicons": "3.0.0",
+        "jpush-phonegap-plugin": "~3.1.4",
         "mx.ferreyra.callnumber": "~0.0.2",
         "rxjs": "5.4.0",
         "sw-toolbox": "3.6.0",
-        "zone.js": "0.8.12",
-        "jpush-phonegap-plugin": "~3.1.4"
+        "zone.js": "0.8.12"
     },
     "devDependencies": {
         "@ionic/app-scripts": "1.3.7",
         "@ionic/cli-plugin-cordova": "1.6.1",
         "@ionic/cli-plugin-ionic-angular": "1.4.1",
-        "ionic": "3.7.0",
+        "ionic": "3.9.2",
         "typescript": "2.3.3"
     },
     "cordova": {
@@ -95,6 +97,9 @@
             "mx.ferreyra.callnumber": {},
             "jpush-phonegap-plugin": {
                 "APP_KEY": "e81742121133ab99cadb41ad"
+            },
+            "cordova-alipay-base": {
+                "APP_ID": "2017080508048173"
             }
         }
     }

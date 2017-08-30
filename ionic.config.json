@@ -11,5 +11,8 @@
       "path": "/kit_file_server",
       "proxyUrl": "http://88.128.18.144:3333/kit_file_server"
     }
-  ]
+  ],
+  "integrations": {
+    "cordova": {}
+  }
 }

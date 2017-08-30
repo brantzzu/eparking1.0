@@ -33,6 +33,7 @@ import { GlobalData } from "../providers/GlobalData";
 import { ENABLE_FUNDEBUG, IS_DEBUG, FUNDEBUG_API_KEY } from "../providers/Constants";
 import { Logger } from "../providers/Logger";
 import { ModalFromRightEnter, ModalFromRightLeave, ModalScaleEnter, ModalScaleLeave } from "./modal-transitions";
+import { Alipay } from "@ionic-native/alipay";
 
 declare var require: any;
 let fundebug: any = require("fundebug-javascript");//先安装依赖:cnpm i fundebug-javascript --save
@@ -89,7 +90,8 @@ class FunDebugErrorHandler implements ErrorHandler {
     Helper,
     Utils,
     GlobalData,
-    Logger
+    Logger,
+    Alipay
   ]
 })
 export class AppModule {
