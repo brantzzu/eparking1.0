@@ -38,9 +38,25 @@ export class MinePage {
     this.storage.get('LoginInfo').then(loginInfo => {
       let userInfo = loginInfo.user;
       if (userInfo) {
-        this.userInfo = userInfo;
-        this.avatarPath = userInfo.avatarPath;
+        console.log("userInfoionviewwillEnter:");
+        console.log(userInfo);
+        // this.userInfo = userInfo;
+        // this.avatarPath = userInfo.avatarPath;
       }
+    });
+  }
+
+  ngAfterContentInit() {
+    this.storage.get('LoginInfo').then(loginInfo => {
+      //let userInfo = loginInfo.user;
+      this.userInfo = loginInfo.user;
+      this.avatarPath = loginInfo.user.avatarPath;
+      // if (userInfo) {
+      //   console.log("userInfo:");
+      //   console.log(userInfo);
+      //   this.userInfo = userInfo;
+      //   this.avatarPath = userInfo.avatarPath;
+      // }
     });
   }
 

@@ -1,9 +1,6 @@
-/**
- * Created by yanxiaojun617@163.com on 12-27.
- */
+
 import { Injectable } from '@angular/core';
 import { ToastController, LoadingController, Platform, Loading, AlertController } from 'ionic-angular';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AppVersion } from '@ionic-native/app-version';
@@ -15,14 +12,13 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Network } from '@ionic-native/network';
 import { AppMinimize } from "@ionic-native/app-minimize";
-
 import { Position } from "../model/type";
 import { APP_DOWNLOAD, APK_DOWNLOAD, IMAGE_SIZE, QUALITY_SIZE } from "./Constants";
 import { GlobalData } from "./GlobalData";
 import { Observable } from "rxjs";
 declare var LocationPlugin;
 declare var AMapNavigation;
-declare var cordova: any;
+declare var AMap;
 
 @Injectable()
 export class NativeService {
@@ -391,7 +387,9 @@ export class NativeService {
     return Observable.create(observer => {
       if (this.isMobile()) {
         LocationPlugin.getLocation(data => {
-          observer.next({ 'lng': data.longitude, 'lat': data.latitude });
+          observer.next({ 'lng': data.longitude, 'lat': data.latitude, 'address': data.address });
+          // console.log("locationData:");
+          // console.log(data);
         }, msg => {
           this.log('getUserLocation:' + msg);
           this.alert(msg.indexOf('缺少定位权限') == -1 ? ('错误消息：' + msg) : '缺少定位权限，请在手机设置中开启');
@@ -401,6 +399,24 @@ export class NativeService {
         console.log('非手机环境,即测试环境返回固定坐标');
         observer.next({ 'lng': 121.49509906768695, 'lat': 31.30709098883003 });
       }
+    });
+  }
+
+  getUserCity(): Observable<String> {
+    return Observable.create(observable => {
+      let citysearch = new AMap.CitySearch();
+      citysearch.getLocalCity((status, result) => {
+        if (status === 'complete' && result.info === 'OK') {
+          if (result && result.city && result.bounds) {
+            let cityinfo = result.city;
+            observable.next(cityinfo);
+            //document.getElementById('tip').innerHTML = '您当前所在城市：' + cityinfo;
+          }
+        } else {
+          observable.next("暂时无法获取当前城市");
+          //document.getElementById('tip').innerHTML = result.info;
+        }
+      });
     });
   }
 

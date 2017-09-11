@@ -29,8 +29,20 @@ page-index {
 .classification .cbox{ width:25%; padding-top:10px; float:left;}
 .classification .icon{ width:60px; height:60px;  margin:auto; }
 .classification .icon img{width: 50px; height: 50px;}
-.classification p{ font-size:12px; text-align:center; line-height:15px; color: #404040;}
+.classification p{ font-size:12px; text-align:center; line-height:15px; color: #404040;
+}
 
+#nearByParkingLot{
+  width:100%;
+  height:150px;
+}
+
+#searchNearbyParkingLot{
+  text-align: center;
+}
+.blue{
+  color: 	#7b68ee;
+}
 }
 
 

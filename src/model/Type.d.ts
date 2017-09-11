@@ -1,4 +1,5 @@
 export interface Position {
   lng: string,
-  lat: string
+  lat: string,
+  address: String
 }

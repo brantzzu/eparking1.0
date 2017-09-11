@@ -1,5 +1,4 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-
 import { NavParams, ViewController } from 'ionic-angular';
 import { NativeService } from "../../../providers/NativeService";
 

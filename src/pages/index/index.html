@@ -26,12 +26,17 @@
       </ion-slide> -->
     </ion-slides>
     <hr>
-    <button ion-button round full icon-right (click)="goToParkingLot()">进入智能停车
+    <!-- <button ion-button round full icon-right (click)="goToParkingLot()">进入智能停车
     <ion-icon name='ios-arrow-forward' item-right></ion-icon>
-    </button>
+    </button> -->
+
+    <h3>附近<span class="blue">{{nearbyParkingLotsNum}}</span>个停车场</h3>
+    <p>{{address}}</p>
   </div>
   <hr>
-  <div id="functionPanel" class="classification">
+  <div id="nearByParkingLot">
+  </div>
+  <!-- <div id="functionPanel" class="classification">
     <div class="cbox">
       <div class="icon">
         <img src="./assets/img/vip64.png" />
@@ -80,5 +85,30 @@
       </div>
       <p>用车百科</p>
     </div>
-  </div>
+  </div> -->
+  <!-- <ion-card>
+    <ion-card-content>
+      推荐
+    </ion-card-content>
+  </ion-card> -->
+  <hr>
+  <h4 style="text-align: center;font-size:11pt">推荐</h4>
+  <ion-card>
+    <ion-item padding>
+      <p></p>
+      <h2>{{recommendParkingLot?.address}}</h2>
+      <p>{{recommendParkingLot?.name}}</p>
+      <p>空闲车：未知</p>
+    </ion-item>
+    <ion-item>
+      <span item-left>{{recommendParkingLot?.distance}}米</span>
+      <button ion-button icon-left clear item-end (click)="mapNavigation(1,this.locationLng,this.locationLat)">
+      <ion-icon name="navigate">去这里</ion-icon>
+    </button>
+    </ion-item>
+  </ion-card>
+  <ion-item text-center>
+    <button ion-button outline id="searchNearbyParkingLot" (click)="searchNearbyParkingLot()">查看附近停车场
+    </button>
+  </ion-item>
 </ion-content>
