@@ -12,7 +12,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Network } from '@ionic-native/network';
 import { AppMinimize } from "@ionic-native/app-minimize";
-import { Position } from "../model/type";
+import { Geolocation } from '@ionic-native/geolocation';
+import { Position, NearbyMarkers } from "../model/type";
 import { APP_DOWNLOAD, APK_DOWNLOAD, IMAGE_SIZE, QUALITY_SIZE } from "./Constants";
 import { GlobalData } from "./GlobalData";
 import { Observable } from "rxjs";
@@ -38,9 +39,12 @@ export class NativeService {
     private inAppBrowser: InAppBrowser,
     private imagePicker: ImagePicker,
     private network: Network,
+    private geolocation: Geolocation,
     private appMinimize: AppMinimize,
     private loadingCtrl: LoadingController,
-    private globalData: GlobalData, ) {
+    private globalData: GlobalData
+
+  ) {
   }
 
   log(info): void {
@@ -399,6 +403,53 @@ export class NativeService {
         console.log('非手机环境,即测试环境返回固定坐标');
         observer.next({ 'lng': 121.49509906768695, 'lat': 31.30709098883003 });
       }
+    });
+  }
+  // getUserLocation(): Observable<Position> {
+  //   return Observable.create(observer => {
+  //     if (this.isMobile()) {
+  //       this.geolocation.getCurrentPosition().then((resp) => {
+  //         this.httpService.get(" http://restapi.amap.com/v3/assistant/coordinate/convert?locations=" + resp.coords.longitude + ", " + resp.coords.latitude + " &coordsys=gps&output=xml&key=39d5ce75adbc78bdffd0c9fe13e3b5eb").map(res => {
+  //           return res.json();
+  //         }).subscribe((json: any) => {
+  //           observer.next({ 'lng': json.longitude, 'lat': json.latitude, 'address': '' });
+  //         });
+  //       }).catch((error) => {
+  //         this.showToast("获取位置失败，请在手机设置中开启定位");
+  //         observer.error('获取位置失败');
+
+  //       })
+  //     } else {
+  //       console.log('非手机环境,即测试环境返回固定坐标');
+  //       observer.next({ 'lng': 121.49509906768695, 'lat': 31.30709098883003 });
+  //     }
+  //   });
+  // }
+
+
+  /**
+ * 搜索附件的停车场
+ */
+  searchNearbyParkingLots(locationLng: string, locationLat: string): Observable<NearbyMarkers> {
+    return Observable.create(observable => {
+      AMap.plugin(['AMap.PlaceSearch'], () => {
+        //console.info("start geocoder()");
+        let placeSearch = new AMap.PlaceSearch({
+          pageSize: 50,
+          pageIndex: 1
+        });
+        placeSearch.setType('停车场');
+        placeSearch.setCity('上海');
+        placeSearch.searchNearBy("", [locationLng, locationLat], 1000, (status, result) => {
+          if (status === 'complete' && result.info === 'OK') {
+            if (result.poiList.count > 0) {
+              let nearbyMarkers = result.poiList.pois;
+              let recommendParkingLot = nearbyMarkers[0];
+              observable.next({ 'nearbyMarkers': nearbyMarkers, 'nearbyParkingLotsNum': result.poiList.count, 'recommendParkingLot': recommendParkingLot });
+            }
+          }
+        });
+      });
     });
   }
 

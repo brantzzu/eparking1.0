@@ -11,11 +11,12 @@ import { MessageModule } from '../pages/message/message.module';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AppVersion } from '@ionic-native/app-version';
-import { Camera } from '@ionic-native/camera';
 import { Toast } from '@ionic-native/toast';
+import { Camera } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { Transfer } from '@ionic-native/transfer';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { Geolocation } from '@ionic-native/geolocation';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Network } from '@ionic-native/network';
 import { AppMinimize } from '@ionic-native/app-minimize';
@@ -26,7 +27,7 @@ import { HttpService } from "../providers/HttpService";
 import { FileService } from "../providers/FileService";
 import { Helper } from "../providers/Helper";
 import { Utils } from "../providers/Utils";
-import { IndexModule } from "../pages/index/index.module";
+import { FirstModule } from "../pages/first/first.module";
 import { HttpModule } from "@angular/http";
 import { DemoModule } from "../pages/demo/demo.module";
 import { GlobalData } from "../providers/GlobalData";
@@ -48,7 +49,6 @@ class FunDebugErrorHandler implements ErrorHandler {
   }
 }
 
-
 @NgModule({
   declarations: [MyApp],
   imports: [
@@ -64,7 +64,7 @@ class FunDebugErrorHandler implements ErrorHandler {
     HomeModule,
     DemoModule,
     MineModule,
-    IndexModule,
+    FirstModule,
     MessageModule
   ],
   bootstrap: [IonicApp],
@@ -73,12 +73,13 @@ class FunDebugErrorHandler implements ErrorHandler {
     StatusBar,
     SplashScreen,
     AppVersion,
-    Camera,
     Toast,
     File,
     Transfer,
+    Geolocation,
     InAppBrowser,
     ImagePicker,
+    Camera,
     Network,
     AppMinimize,
     CallNumber,

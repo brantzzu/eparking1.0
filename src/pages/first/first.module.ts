@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicModule } from 'ionic-angular';
-import { IndexPage } from "./index";
+import { FirstPage } from "./first";
 import { TestService } from "./TestService";
 import { SelectPicturePageModule } from "../../shared/select-picture/select-picture.module";
 @NgModule({
@@ -8,9 +8,9 @@ import { SelectPicturePageModule } from "../../shared/select-picture/select-pict
     IonicModule,
     SelectPicturePageModule
   ],
-  declarations: [IndexPage],
-  entryComponents: [IndexPage],
+  declarations: [FirstPage],
+  entryComponents: [FirstPage],
   providers: [TestService]
 })
-export class IndexModule {
+export class FirstModule {
 }

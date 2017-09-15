@@ -14,16 +14,6 @@
         <img [src]="slide.image" class="slide-image" />
         <!-- <h2 class="slide-title" [innerHTML]="slide.title"></h2> -->
       </ion-slide>
-      <!-- <ion-slide>
-        <ion-toolbar>
-        </ion-toolbar>
-        <img src="./assets/img/eparking2.jpg" class="slide-image" />
-        <h2 class="slide-title">Ready to Play?</h2>
-        <button ion-button large clear icon-end color="primary">
-        Continue
-        <ion-icon name="arrow-forward"></ion-icon>
-      </button>
-      </ion-slide> -->
     </ion-slides>
     <hr>
     <!-- <button ion-button round full icon-right (click)="goToParkingLot()">进入智能停车
@@ -93,22 +83,27 @@
   </ion-card> -->
   <hr>
   <h4 style="text-align: center;font-size:11pt">推荐</h4>
-  <ion-card>
-    <ion-item padding>
-      <p></p>
-      <h2>{{recommendParkingLot?.address}}</h2>
-      <p>{{recommendParkingLot?.name}}</p>
-      <p>空闲车：未知</p>
-    </ion-item>
-    <ion-item>
-      <span item-left>{{recommendParkingLot?.distance}}米</span>
-      <button ion-button icon-left clear item-end (click)="mapNavigation(1,this.locationLng,this.locationLat)">
+  <div *ngIf="noNearbyParkingLot;else recommendParkingLots">
+    <h3 style="text-align:center">暂无推荐车位</h3>
+  </div>
+  <ng-template #recommendParkingLots>
+    <ion-card>
+      <ion-item padding>
+        <p></p>
+        <h2>{{recommendParkingLot?.address}}</h2>
+        <p>{{recommendParkingLot?.name}}</p>
+        <p>空闲车位：未知</p>
+      </ion-item>
+      <ion-item>
+        <span item-left>{{recommendParkingLot?.distance}}米</span>
+        <button ion-button icon-left clear item-end (click)="mapNavigation(1,recommendParkingLot?.location.lng,recommendParkingLot?.location.lat)">
       <ion-icon name="navigate">去这里</ion-icon>
     </button>
-    </ion-item>
-  </ion-card>
+      </ion-item>
+    </ion-card>
+  </ng-template>
   <ion-item text-center>
-    <button ion-button outline id="searchNearbyParkingLot" (click)="searchNearbyParkingLot()">查看附近停车场
+    <button ion-button outline id="searchNearbyParkingLot" (click)="goToParkingLot()">查看附近停车场
     </button>
   </ion-item>
 </ion-content>

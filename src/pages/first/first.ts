@@ -2,18 +2,22 @@ import { Component, ViewChild } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { TestService } from "./TestService";
 // import { FileObj } from "../../model/FileObj";
-import { Slides, NavController, ModalController, Tabs } from 'ionic-angular';
+import { Slides, NavController, ModalController, Tabs, Platform } from 'ionic-angular';
 import { NativeService } from "../../providers/NativeService";
 import { NavigationModalPage } from "../home/navigation-modal/navigation-modal";
+import { Geolocation } from '@ionic-native/geolocation';
+import { Position } from "../model/type";
+import { Observable } from "rxjs";
 
 declare var AliPay: any;
 declare var AMap;
+declare var LocationPlugin: any;
 
 @Component({
-  selector: 'page-index',
-  templateUrl: 'index.html',
+  selector: 'page-first',
+  templateUrl: 'first.html',
 })
-export class IndexPage {
+export class FirstPage {
   //fileObjList: FileObj[] = [];
   tab: Tabs;
   map: any;
@@ -50,23 +54,23 @@ export class IndexPage {
   constructor(public testService: TestService,
     private nativeService: NativeService,
     private navCtrl: NavController,
-    private modalCtrl: ModalController
+    private geolocation: Geolocation,
+    private modalCtrl: ModalController,
+    private platform: Platform
   ) {
     this.tab = this.navCtrl.parent;
-    this.nativeService.getUserLocation().subscribe(position => {
-
-      this.locationLng = position['lng'];
-      this.locationLat = position['lat']
-      this.address = position['address'];
+    this.platform.ready().then((readySource) => {
+      console.log('Platform ready from', readySource);
+      this.mapLocation();
     });
   }
-  ionViewWillEnter() {
-    this.searchNearbyParkingLots();
 
-  }
   ngAfterContentInit() {
+
     this.loadMap();
-    this.mapLocation();
+    //this.mapLocation();
+    //this.searchNearbyParkingLots();
+
   }
   ionViewDidEnter() {
     this.slides.startAutoplay();
@@ -79,7 +83,6 @@ export class IndexPage {
     this.slides.autoplay = true;
   }
   ngOnInit() {
-
     setInterval(() => {
       this.slides.slideNext(300, true);
     }, 3000);
@@ -106,6 +109,7 @@ export class IndexPage {
           that.map.addControl(new AMap.ToolBar());
           that.map.addControl(new AMap.Scale());
         });
+
       });
       this.map.on('click', (e) => {
         this.tab.select(1);
@@ -117,12 +121,11 @@ export class IndexPage {
 
   }
   mapLocation() {
-    let that = this;
-    that.isPositioning = true;
-    that.nativeService.getUserLocation().subscribe(position => {
-      that.map.clearMap();
-      that.marker = new AMap.Marker({
-        map: that.map,
+    // let that = this;
+    this.isPositioning = true;
+    this.nativeService.getUserLocation().subscribe(position => {
+      this.marker = new AMap.Marker({
+        map: this.map,
         //icon: "https://webapi.amap.com/theme/v1.3/markers/n/mark_r.png",
         icon: "./assets/img/location.png",
         position: new AMap.LngLat(position['lng'], position['lat']),
@@ -131,39 +134,24 @@ export class IndexPage {
       this.locationLng = position['lng'];
       this.locationLat = position['lat']
       this.address = position['address'];
-      that.map.setFitView();
-      that.map.setZoom(16);
-      that.isPositioning = false;
-
-    }, () => {
-      that.isPositioning = false;
-    });
-  }
-  /**
-   * 搜索附件的停车场
-   */
-  searchNearbyParkingLots() {
-    AMap.plugin(['AMap.PlaceSearch'], () => {
-      //console.info("start geocoder()");
-      let placeSearch = new AMap.PlaceSearch({
-        pageSize: 50,
-        pageIndex: 1
-      });
-      placeSearch.setType('停车场');
-      placeSearch.setCity(this.nativeService.getUserCity());
-      placeSearch.searchNearBy("", [this.locationLng, this.locationLat], 1000, (status, result) => {
-        if (status === 'complete' && result.info === 'OK') {
-          this.nearbyParkingLotsNum = result.poiList.count;
-          this.nearbyMarkers = result.poiList.pois;
-          if (this.nearbyMarkers.length > 0) {
-            this.recommendParkingLot = this.nearbyMarkers[0];
-            this.noNearbyParkingLot = false;
-          }
-          //console.log(this.nearbyMarkers);
+      this.map.setFitView();
+      this.map.setZoom(16);
+      this.isPositioning = false;
+      this.nativeService.searchNearbyParkingLots(this.locationLng, this.locationLat).subscribe(markers => {
+        this.recommendParkingLot = markers.recommendParkingLot;
+        this.nearbyParkingLotsNum = markers.nearbyParkingLotsNum;
+        console.log(this.recommendParkingLot);
+        if (markers.nearbyParkingLotsNum > 0) {
+          this.noNearbyParkingLot = false;
         }
       });
+
+    }, () => {
+      this.isPositioning = false;
     });
+
   }
+
   mapNavigation(navigationType, destinationLng, destinationLat) {
     //let markerData = this.marker.getExtData();
     if (!destinationLng || !destinationLat) {
@@ -177,6 +165,25 @@ export class IndexPage {
     modal.present();
     modal.onDidDismiss(marker => {
       if (marker) {
+      }
+    });
+  }
+
+  getUserLocation(): Observable<Position> {
+    return Observable.create(observer => {
+      if (this.nativeService.isMobile()) {
+        LocationPlugin.getLocation(data => {
+          observer.next({ 'lng': data.longitude, 'lat': data.latitude, 'address': data.address });
+          // console.log("locationData:");
+          // console.log(data);
+        }, msg => {
+          console.log('getUserLocation:' + msg);
+          this.nativeService.showToast(msg.indexOf('缺少定位权限') == -1 ? ('错误消息：' + msg) : '缺少定位权限，请在手机设置中开启');
+          observer.error('获取位置失败');
+        });
+      } else {
+        console.log('非手机环境,即测试环境返回固定坐标');
+        observer.next({ 'lng': 121.49509906768695, 'lat': 31.30709098883003 });
       }
     });
   }

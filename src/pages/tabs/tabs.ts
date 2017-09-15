@@ -3,7 +3,7 @@ import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
 import { MinePage } from '../mine/mine';
 import { Tabs, Events } from "ionic-angular";
-import { IndexPage } from "../index/index";
+import { FirstPage } from "../first/first";
 import { DemoPage } from "../demo/demo";
 import { MessagePage } from "../message/message";
 import { GlobalData } from "../../providers/GlobalData";
@@ -15,7 +15,7 @@ import { LoginInfo } from "../../model/UserInfo";
 })
 export class TabsPage {
   @ViewChild('mainTabs') tabs: Tabs;
-  testRoot: any = IndexPage;
+  testRoot: any = FirstPage;
   demoRoot: any = MessagePage;
   homeRoot: any = HomePage;
   mineRoot: any = MinePage;

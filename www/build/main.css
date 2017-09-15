@@ -28386,9 +28386,80 @@ page-custom-icon-demo .my-icon > ion-icon {
   margin: 10px;
 }
 
+page-first .index-page .toolbar-background {
+  background: #fff;
+  border-color: transparent;
+}
+
+page-first .index-page .slide-zoom {
+  height: 100%;
+}
+
+page-first .index-page .slide-title {
+  margin-top: 0.8rem;
+}
+
+page-first .index-page .slide-image {
+  max-height: 40%;
+  max-width: 100%;
+  margin: 10px 0;
+}
+
+page-first #functionPanel {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+page-first .classification {
+  width: 100%;
+  height: auto;
+}
+
+page-first .classification div {
+  width: 95%;
+  margin: auto;
+}
+
+page-first .classification .cbox {
+  width: 25%;
+  padding-top: 10px;
+  float: left;
+}
+
+page-first .classification .icon {
+  width: 60px;
+  height: 60px;
+  margin: auto;
+}
+
+page-first .classification .icon img {
+  width: 50px;
+  height: 50px;
+}
+
+page-first .classification p {
+  font-size: 12px;
+  text-align: center;
+  line-height: 15px;
+  color: #404040;
+}
+
+page-first #nearByParkingLot {
+  width: 100%;
+  height: 150px;
+}
+
+page-first #searchNearbyParkingLot {
+  text-align: center;
+}
+
+page-first .blue {
+  color: #7b68ee;
+}
+
 page-home .map-container {
   width: 100%;
-  height: 100%;
+  height: 40%;
 }
 
 page-home .search-bar {
@@ -28426,7 +28497,7 @@ page-home #markerinfo {
   bottom: 0em;
   margin-left: 0px;
   overflow: hidden;
-  height: auto;
+  height: 60%;
   background: white;
   float: left;
   z-index: 9999;
@@ -28443,6 +28514,23 @@ page-home #navigation {
   width: 30%;
   display: block;
   border-radius: 4px;
+}
+
+page-home .div-left {
+  float: left;
+  padding-left: 10px;
+}
+
+page-home #clickbutton {
+  float: right;
+  padding-right: 10px;
+}
+
+page-home #navigateToParkingLot {
+  float: right;
+  padding-right: 5px;
+  text-align: right;
+  padding-top: 10px;
 }
 
 page-location-search-modal .searchbar-ios-cancel {
@@ -28475,77 +28563,6 @@ page-navigation-modal .align-center {
 
 page-navigation-modal .amap-call {
   display: none;
-}
-
-page-index .index-page .toolbar-background {
-  background: #fff;
-  border-color: transparent;
-}
-
-page-index .index-page .slide-zoom {
-  height: 100%;
-}
-
-page-index .index-page .slide-title {
-  margin-top: 0.8rem;
-}
-
-page-index .index-page .slide-image {
-  max-height: 40%;
-  max-width: 100%;
-  margin: 10px 0;
-}
-
-page-index #functionPanel {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-page-index .classification {
-  width: 100%;
-  height: auto;
-}
-
-page-index .classification div {
-  width: 95%;
-  margin: auto;
-}
-
-page-index .classification .cbox {
-  width: 25%;
-  padding-top: 10px;
-  float: left;
-}
-
-page-index .classification .icon {
-  width: 60px;
-  height: 60px;
-  margin: auto;
-}
-
-page-index .classification .icon img {
-  width: 50px;
-  height: 50px;
-}
-
-page-index .classification p {
-  font-size: 12px;
-  text-align: center;
-  line-height: 15px;
-  color: #404040;
-}
-
-page-index #nearByParkingLot {
-  width: 100%;
-  height: 150px;
-}
-
-page-index #searchNearbyParkingLot {
-  text-align: center;
-}
-
-page-index .blue {
-  color: #7b68ee;
 }
 
 page-find-password .verification {

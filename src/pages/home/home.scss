@@ -1,7 +1,7 @@
 page-home {
   .map-container {
     width: 100%;
-    height: 100%;
+    height: 40%;
   }
   .search-bar {
     position: absolute;
@@ -35,7 +35,7 @@ page-home {
             bottom:0em;
             margin-left:0px;
             overflow:hidden;
-            height:auto;
+            height:60%;
             background:white;
             float:left;
             z-index:9999;
@@ -51,6 +51,23 @@ page-home {
     width: 30%;
     display: block;
     border-radius: 4px;
+  }
+
+  .div-left{
+    float:left;
+    padding-left:10px;
+  }
+
+  #clickbutton{
+    float:right;
+    padding-right:10px;
+  }
+
+  #navigateToParkingLot{
+    float:right;
+    padding-right:5px;
+    text-align: right;
+    padding-top: 10px;
   }
 }
 

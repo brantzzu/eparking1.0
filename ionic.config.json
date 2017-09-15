@@ -5,7 +5,7 @@
   "proxies": [
     {
       "path": "/app",
-      "proxyUrl": "http://88.128.18.144:7777/app"
+      "proxyUrl": "http://quants.sufe.edu.cn/app"
     },
     {
       "path": "/kit_file_server",
