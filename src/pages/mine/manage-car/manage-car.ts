@@ -5,7 +5,6 @@ import { Helper } from "../../../providers/Helper";
 import { HttpService } from "../../../providers/HttpService";
 import { NativeService } from "../../../providers/NativeService";
 import { FormBuilder, Validators } from '@angular/forms';
-import { Response } from "@angular/http";
 
 @Component({
     selector: 'page-manage-car',

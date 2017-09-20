@@ -1,15 +1,9 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 //import Chart from 'chart.js';
 import { Alipay, AlipayOrder } from '@ionic-native/alipay';
 import { HttpService } from "../../../providers/HttpService";
 import { NativeService } from "../../../providers/NativeService";
-/*
-  Generated class for the ChartjsDemo page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 //declare var AliPay: any;
 @Component({
     selector: 'alipay-demo',

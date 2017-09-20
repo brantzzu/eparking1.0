@@ -17,8 +17,8 @@ import { AlipayDemoPage } from "./alipay/alipay-demo";
 
 @NgModule({
   imports: [IonicModule, PagingPageModule, SelectPicturePageModule, TransitionDemoPageModule, ModalScalePageModule, ModalFromRightPageModule],
-  declarations: [DemoPage, PaginationDemoPage, CustomIconDemoPage, AlipayDemoPage, ChartjsDemoPage, SelectPicDemoPage, CustomPipeDemo, Conversion, CropPicDemoPage],
-  entryComponents: [DemoPage, PaginationDemoPage, CustomIconDemoPage, AlipayDemoPage, ChartjsDemoPage, SelectPicDemoPage, CustomPipeDemo, CropPicDemoPage],
+  declarations: [DemoPage, CustomIconDemoPage, AlipayDemoPage, ChartjsDemoPage, SelectPicDemoPage, CustomPipeDemo, Conversion, CropPicDemoPage],
+  entryComponents: [DemoPage, CustomIconDemoPage, AlipayDemoPage, ChartjsDemoPage, SelectPicDemoPage, CustomPipeDemo, CropPicDemoPage],
   providers: [],
   exports: [IonicModule]
 })

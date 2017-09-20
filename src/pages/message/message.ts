@@ -1,6 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import 'rxjs/add/operator/map';
-import { Slides, NavController, Tabs } from 'ionic-angular';
+import { NavController, Tabs } from 'ionic-angular';
 import { JPush } from "../../../typings/modules/jpush/index";
 import { NativeService } from '../../providers/NativeService';
 import { HttpService } from '../../providers/HttpService';

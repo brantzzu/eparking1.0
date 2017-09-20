@@ -41,27 +41,28 @@ export class LoginPage {
     this.storage.get('LoginInfo').then((loginInfo: LoginInfo) => {
       this.userInfo = loginInfo && loginInfo.user ? loginInfo.user : null;
     });
+    this.canLeave = false;
   }
 
-  // ionViewCanLeave(): boolean {
-  //   let bool = !!this.userInfo;
-  //   if (this.canLeave || bool) {
-  //     return true;
-  //   } else {
-  //     this.alertCtrl.create({
-  //       title: '确认退出软件？',
-  //       buttons: [{ text: '取消' },
-  //       {
-  //         text: '确定',
-  //         handler: () => {
-  //           this.platform.exitApp();
-  //         }
-  //       }
-  //       ]
-  //     }).present();
-  //     return false;
-  //   }
-  // }
+  ionViewCanLeave(): boolean {
+    let bool = !!this.userInfo;
+    if (this.canLeave || bool) {
+      return true;
+    } else {
+      this.alertCtrl.create({
+        title: '确认退出软件？',
+        buttons: [{ text: '取消' },
+        {
+          text: '确定',
+          handler: () => {
+            this.platform.exitApp();
+          }
+        }
+        ]
+      }).present();
+      return false;
+    }
+  }
 
   login(user) {
     this.submitted = true;
@@ -107,14 +108,14 @@ export class LoginPage {
     this.canLeave = true;
     let modal = this.modalCtrl.create(RegisterPage);
     modal.present();
-    this.canLeave = false;
+    //this.canLeave = false;
   }
 
   findPassword() {
     this.canLeave = true;
     let modal = this.modalCtrl.create(FindPasswordPage);
     modal.present();
-    this.canLeave = false
+    // this.canLeave = false
   }
 
 }

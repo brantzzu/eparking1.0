@@ -61,6 +61,17 @@ export class HttpService {
     }));
   }
 
+  public postVerfiedCode(url: string, params: any = null): Observable<Response> {
+    return this.request(url, new RequestOptions({
+      method: RequestMethod.Post,
+      params: params,
+      headers: new Headers({
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        'Accept': 'application/json; charset=utf-8'
+      })
+    }));
+  }
+
   public postFormData(url: string, paramMap: any = null): Observable<Response> {
     return this.request(url, new RequestOptions({
       method: RequestMethod.Post,
@@ -171,7 +182,7 @@ export class HttpService {
   private optionsAddToken(options: RequestOptionsArgs): void {
     let token = this.globalData.token;
     if (options.headers) {
-      console.log("token:" + token);
+      //console.log("token:" + token);
       options.headers.append('token', token);
     } else {
       options.headers = new Headers({
