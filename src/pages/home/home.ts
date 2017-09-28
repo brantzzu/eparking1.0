@@ -58,7 +58,6 @@ export class HomePage {
   }
 
   loadMap() {
-    //let that = this;
     try {
       this.map = new AMap.Map('map_container', {
         view: new AMap.View2D({//创建地图二维视口
@@ -74,15 +73,11 @@ export class HomePage {
           this.map.addControl(new AMap.Scale());
         });
       });
-      // this.map.on('click', (e) => {
-      //   document.getElementById("markerinfo").style.display = "none";
-      // });
       window['HomeAMap'] = this.map;
     } catch (err) {
       this.mapIsComplete = false;
       this.nativeService.showToast('地图加载失败,请检查网络或稍后再试.')
     }
-
   }
   /**
    * 地址搜索框
@@ -95,11 +90,11 @@ export class HomePage {
       if (marker) {
         //this.showIonFab = true;
         //this.marker.push(marker.location.lng, marker.location.lat);
-        //this.map.clearMap();
-        for (let i = 0; i < this.searchMarkers.length; i++) {
-          console.log("remove marker:" + this.searchMarkers[i].title);
-          this.map.remove(this.searchMarkers[i]);
-        }
+        this.map.clearMap();
+        // for (let i = 0; i < this.searchMarkers.length; i++) {
+        //   console.log("remove marker:" + this.searchMarkers[i].title);
+        //   this.map.remove(this.searchMarkers[i]);
+        // }
         let newmarker = new AMap.Marker({
           map: this.map,
           id: marker.id,
@@ -108,20 +103,26 @@ export class HomePage {
           extData: marker,
           title: marker.name
         });
-        this.searchMarkers.push(newmarker);
+        console.log(newmarker['extData']);
+        console.log(newmarker.G);
+        console.log(newmarker.c);
+        //this.searchMarkers.push(newmarker);
         //this.map.setFitView();
         newmarker.setMap(this.map);
-        this.map.setZoomAndCenter(13, [marker.location.lng, marker.location.lat]);
+        this.map.setZoomAndCenter(16, [marker.location.lng, marker.location.lat]);
+        this.address = newmarker.G.title;
+        this.nativeService.searchNearbyParkingLots(marker.location.lng, marker.location.lat).subscribe(markers => {
+          this.nearbyMarkers = markers.nearbyMarkers;
+          this.noNearbyParkingLot = false;
+          this.initMarker();
+        });
       }
     });
   }
-
   /**
    * 地图定位
    */
-
   mapLocation() {
-
     this.isPositioning = true;
     this.nativeService.getUserLocation().subscribe(position => {
       this.map.clearMap();
@@ -130,7 +131,6 @@ export class HomePage {
         //icon: "https://webapi.amap.com/theme/v1.3/markers/n/mark_r.png",
         icon: "./assets/img/location.png",
         position: new AMap.LngLat(position['lng'], position['lat']),
-
       });
       this.locationLng = position['lng'];
       this.locationLat = position['lat'];
@@ -165,21 +165,6 @@ export class HomePage {
       }
     });
   }
-
-  /** add Markers */
-  // addMarker(i, d): any {
-  //   var lngX = d.location.getLng();
-  //   var latY = d.location.getLat();
-  //   var markerOption = {
-  //     map: this.map,
-  //     icon: "http://webapi.amap.com/theme/v1.3/markers/n/mark_b.png",
-  //     position: [lngX, latY],
-  //     topWhenMouseOver: true
-  //   };
-  //   this.marker.push([lngX, latY]);
-  //   return new AMap.Marker(markerOption);
-  // }
-
   /**
    * 初始化停车场Marker
    */
@@ -188,12 +173,11 @@ export class HomePage {
       console.info("start initMarker()");
       AMap.plugin(['AMap.Geocoder'],
         () => {
-          console.info("start geocoder()");
+          //console.info("start geocoder()");
           let geocoder = new AMap.Geocoder({
             city: city, //城市，默认：“全国”
             radius: 1000 //范围，默认：500
           });
-
           for (let i = 0; i < this.nearbyMarkers.length; i++) {
             //console.log("address:" + this.nearbyMarkers[i].address);
             geocoder.getLocation(this.nearbyMarkers[i].address, (status, result) => {
@@ -226,24 +210,12 @@ export class HomePage {
     marker['distance'] = distance;
     marker['parkingLotName'] = parkingLotName;
     marker['parkingType'] = parkingType;
-    //marker['accountingStandards'] = accountingStandards;
-    // let lnglat = new AMap.LngLat(this.locationLng, this.locationLat);
-    // let distances = (lnglat.distance([d.location.getLng(), d.location.getLat()]) / 1000).toFixed(2);
-    // let infoTitle = marker['parkingLotName'];
-
-
-    // info.push('<div class="row"><div class="col col-50">' + parkingLotName + '</div><div class="col col-50">距离目的地:' + distances.toString() + '公里</div></div>');
-    // info.push('<button ion-button>' + parkingLotProperty + '</button>&nbsp;&nbsp;<button ion-button>' + ServiceTime + '</button>');
-    // info.push('<div class="row"><div class="col col-70">空闲车位：' + berthNo + ' | ' + accountingStandards + '元/小时</div><div class="col col-30" id="navigationButton"><button id="navigation">导航</button></div></div>');
-
     AMap.event.addListener(marker, 'click', (e) => {
       for (let i = 0; i < this.clickMarkers.length; i++) {
         this.clickMarkers[i].setIcon("./assets/img/marker.png");
       }
       marker.setIcon("./assets/img/markerClick.png");
       this.clickMarkers.push(marker);
-      // document.getElementById("markerinfo").innerHTML = info.join("<br/>");
-      // document.getElementById("markerinfo").style.display = "block";
       let info = [];
       info.push("<span style=\"font-weight:bold\">" + marker['parkingLotName'] + "</span> <br />");
       info.push("<div class=\"div-left\">" + marker['distance'] + "米</div><div id=\"clickbutton\"><img src='./assets/img/navigation.png'></div>");
@@ -258,9 +230,7 @@ export class HomePage {
           this.mapNavigation(1, d.location.getLng(), d.location.getLat());
         });
       }, 1000);
-
     });
-
   }
 
   // getMarkers() {
@@ -268,6 +238,4 @@ export class HomePage {
   //     return res.json();
   //   });
   // }
-
-
 }

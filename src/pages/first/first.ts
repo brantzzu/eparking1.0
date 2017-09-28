@@ -6,12 +6,9 @@ import { Slides, NavController, ModalController, Tabs, Platform } from 'ionic-an
 import { NativeService } from "../../providers/NativeService";
 import { NavigationModalPage } from "../home/navigation-modal/navigation-modal";
 import { Geolocation } from '@ionic-native/geolocation';
-import { Position } from "../model/type";
-import { Observable } from "rxjs";
+import { HomePage } from '../home/home';
 
-declare var AliPay: any;
 declare var AMap;
-declare var LocationPlugin: any;
 
 @Component({
   selector: 'page-first',
@@ -66,11 +63,9 @@ export class FirstPage {
   }
 
   ngAfterContentInit() {
-
     this.loadMap();
     //this.mapLocation();
     //this.searchNearbyParkingLots();
-
   }
   ionViewDidEnter() {
     this.slides.startAutoplay();
@@ -165,25 +160,6 @@ export class FirstPage {
     modal.present();
     modal.onDidDismiss(marker => {
       if (marker) {
-      }
-    });
-  }
-
-  getUserLocation(): Observable<Position> {
-    return Observable.create(observer => {
-      if (this.nativeService.isMobile()) {
-        LocationPlugin.getLocation(data => {
-          observer.next({ 'lng': data.longitude, 'lat': data.latitude, 'address': data.address });
-          // console.log("locationData:");
-          // console.log(data);
-        }, msg => {
-          console.log('getUserLocation:' + msg);
-          this.nativeService.showToast(msg.indexOf('缺少定位权限') == -1 ? ('错误消息：' + msg) : '缺少定位权限，请在手机设置中开启');
-          observer.error('获取位置失败');
-        });
-      } else {
-        console.log('非手机环境,即测试环境返回固定坐标');
-        observer.next({ 'lng': 121.49509906768695, 'lat': 31.30709098883003 });
       }
     });
   }

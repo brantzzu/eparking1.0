@@ -53,8 +53,10 @@ export class RegisterPage {
           this.navCtrl.setRoot(LoginPage);
         } else if (this.httpResponseData == "userExists") {
           this.nativeService.showToast('该手机号已经注册');
+        } else if (this.httpResponseData == "registeredFailed") {
+          this.nativeService.showToast('注册失败...');
         } else {
-          this.nativeService.showToast('注册中...');
+          this.nativeService.showToast("注册中...");
         }
       }, error => {
         console.log(error);// Error getting the data

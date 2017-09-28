@@ -17,10 +17,6 @@ export class AlipayDemoPage {
     constructor(public navCtrl: NavController, public navParams: NavParams,
         private httpService: HttpService, private nativeService: NativeService,
         private alipay: Alipay) { }
-
-
-
-
     ionViewDidEnter() {
 
     }

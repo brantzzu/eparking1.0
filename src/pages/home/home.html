@@ -24,7 +24,7 @@
   </div>
   <div id="map_container" class="map-container"></div>
   <div id="markerinfo">
-    <button ion-button button-light full icon-start>
+    <button ion-button button-light clear full icon-start>
     <ion-icon name="search"></ion-icon>
      {{address}}附近停车场
     </button>
@@ -42,7 +42,7 @@
               <p>车位数：未知</p>
             </div>
             <div class="col" id="navigateToParkingLot" (click)="mapNavigation(1,item?.location.lng,item.location.lat)"><img src='./assets/img/navigate.png'><br />
-              <p>{{item?.distance}}</p>
+              <p>{{item?.distance}}米</p>
             </div>
           </div>
         </ion-item>

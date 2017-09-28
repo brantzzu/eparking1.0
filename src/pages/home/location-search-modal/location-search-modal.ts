@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { Storage } from '@ionic/storage';
-
 import { ViewController, Searchbar } from 'ionic-angular';
 import { NativeService } from "../../../providers/NativeService";
 import { Subject } from "rxjs";
