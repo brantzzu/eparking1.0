@@ -1,11 +1,11 @@
 <ion-header>
   <ion-navbar>
     <ion-title>个人信息</ion-title>
-    <ion-buttons end>
+    <!-- <ion-buttons end>
       <button ion-button (click)="openModal()">
         <ion-icon name="ios-create-outline"></ion-icon>
       </button>
-    </ion-buttons>
+    </ion-buttons> -->
   </ion-navbar>
 </ion-header>
 
@@ -16,7 +16,7 @@
         <img [src]="avatarPath">
       </ion-avatar>
       <h2>{{userInfo.name}}</h2>
-      <p>一本正经的胡说八道</p>
+      <p>Eparking忠实粉丝</p>
       <i class="icon ion-chevron-right icon-accessory"></i>
     </ion-item>
     <ion-item>
@@ -24,9 +24,6 @@
     </ion-item>
     <ion-item>
       手机号码：{{userInfo.phone}}
-    </ion-item>
-    <ion-item>
-      邮箱地址：{{userInfo.email}}
     </ion-item>
   </ion-list>
 </ion-content>

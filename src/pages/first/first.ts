@@ -6,7 +6,6 @@ import { Slides, NavController, ModalController, Tabs, Platform } from 'ionic-an
 import { NativeService } from "../../providers/NativeService";
 import { NavigationModalPage } from "../home/navigation-modal/navigation-modal";
 import { Geolocation } from '@ionic-native/geolocation';
-import { HomePage } from '../home/home';
 
 declare var AMap;
 

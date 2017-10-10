@@ -4,7 +4,6 @@ import { HomePage } from '../home/home';
 import { MinePage } from '../mine/mine';
 import { Tabs, Events } from "ionic-angular";
 import { FirstPage } from "../first/first";
-import { DemoPage } from "../demo/demo";
 import { MessagePage } from "../message/message";
 import { GlobalData } from "../../providers/GlobalData";
 import { Helper } from "../../providers/Helper";
@@ -29,7 +28,7 @@ export class TabsPage {
       let userInfo = loginInfo.user;
       // console.log("subscribe loginInfo user:");
       // console.log(loginInfo.user);
-      this.globalData.userId = userInfo.id;
+      this.globalData.userId = userInfo.phone;
       this.globalData.username = userInfo.username;
       this.globalData.token = loginInfo.access_token;
       this.helper.loadAvatarPath(userInfo.avatarId).subscribe(avatarPath => {

@@ -12,7 +12,7 @@ page-home {
   .position-btn {
     position: relative;
     left: 5px;
-    bottom: 10px;
+    top: 200px;
     z-index: 1;
     font-size: 22px;
     padding: 3px 5px 2px 5px;
@@ -32,10 +32,10 @@ page-home {
   #markerinfo {
             width: 100%;
             position:absolute;
-            bottom:0em;
+            bottom:10px;
             margin-left:0px;
             overflow:hidden;
-            height:60%;
+            height:50%;
             background:white;
             float:left;
             z-index:9999;
@@ -66,7 +66,7 @@ page-home {
 
   #navigateToParkingLot{
     float:right;
-    padding-right:5px;
+    padding-right:0px;
     text-align: right;
     padding-top: 10px;
   }

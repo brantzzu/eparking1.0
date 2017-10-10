@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicModule } from 'ionic-angular';
 import { DemoPage } from "./demo";
-import { PaginationDemoPage } from "./pagination-demo/pagination-demo";
 import { CustomIconDemoPage } from "./custom-icon-demo/custom-icon-demo";
 import { ChartjsDemoPage } from "./chartjs-demo/chartjs-demo";
 import { SelectPicDemoPage } from "./select-pic-demo/select-pic-demo";

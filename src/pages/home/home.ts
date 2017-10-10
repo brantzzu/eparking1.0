@@ -103,9 +103,9 @@ export class HomePage {
           extData: marker,
           title: marker.name
         });
-        console.log(newmarker['extData']);
-        console.log(newmarker.G);
-        console.log(newmarker.c);
+        // console.log(newmarker['extData']);
+        // console.log(newmarker.G);
+        // console.log(newmarker.c);
         //this.searchMarkers.push(newmarker);
         //this.map.setFitView();
         newmarker.setMap(this.map);

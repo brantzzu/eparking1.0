@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
-import {ViewController} from 'ionic-angular';
-import {FormBuilder} from "@angular/forms";
-import {Validators} from "../../../providers/Validators";
-import {NativeService} from "../../../providers/NativeService";
-import {MineService} from "../MineService";
+import { Component } from '@angular/core';
+import { ViewController } from 'ionic-angular';
+import { FormBuilder } from "@angular/forms";
+import { Validators } from "../../../providers/Validators";
+import { NativeService } from "../../../providers/NativeService";
+import { MineService } from "../MineService";
 
 /**
  * Generated class for the ChangePasswordPage page.
@@ -41,9 +41,9 @@ export class ChangePasswordPage {
   };
 
   constructor(private viewCtrl: ViewController,
-              private formBuilder: FormBuilder,
-              private mineService: MineService,
-              private nativeService: NativeService) {
+    private formBuilder: FormBuilder,
+    private mineService: MineService,
+    private nativeService: NativeService) {
     this.form = this.formBuilder.group({
       oldPsw: ['', [Validators.required]],
       newPsw: ['', [Validators.required, Validators.minLength(4)]],
@@ -74,8 +74,15 @@ export class ChangePasswordPage {
       return;
     }
     this.mineService.updateUserPassword(oldPsw, newPsw).subscribe(res => {
-      this.nativeService.showToast('密码修改成功');
-      this.dismiss();
+      if (res['_body'] == "success") {
+        this.nativeService.showToast('密码修改成功');
+        this.dismiss();
+      } else if (res['_body'] == "oldpassworderror") {
+        this.nativeService.showToast("旧密码输入错误");
+      }
+      else {
+        this.nativeService.showToast("密码修改失败");
+      }
     });
   }
 
@@ -85,17 +92,17 @@ export class ChangePasswordPage {
 
   input(val) {
     let m = this.checkPass(val);
-    if(m>=3){
-      this.strength.high=true;
+    if (m >= 3) {
+      this.strength.high = true;
     }
-    if(m==2){
-      this.strength.high=false;
-      this.strength.middle=true;
+    if (m == 2) {
+      this.strength.high = false;
+      this.strength.middle = true;
     }
-    if(m<2){
-      this.strength.high=false;
-      this.strength.middle=false;
-      this.strength.low=true;
+    if (m < 2) {
+      this.strength.high = false;
+      this.strength.middle = false;
+      this.strength.low = true;
     }
   }
 

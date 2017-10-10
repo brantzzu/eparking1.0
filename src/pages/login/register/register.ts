@@ -5,7 +5,7 @@ import { LoginPage } from '../login';
 import { HttpService } from "../../../providers/HttpService";
 //import { Response } from "@angular/http";
 import { NativeService } from "../../../providers/NativeService";
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'page-register',

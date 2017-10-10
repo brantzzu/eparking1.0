@@ -29,11 +29,10 @@
      {{address}}附近停车场
     </button>
     <div *ngIf="noNearbyParkingLot;else nearbyParkingLots">
-      <h3>暂时没有找到附近停车场</h3>
+      <h4>暂时没有找到附近停车场</h4>
     </div>
-
     <ng-template #nearbyParkingLots>
-      <ion-scroll style="width: 100%; height: 100%;" scrollY="true">
+      <ion-scroll style="width: 100%; height: 80%;" scrollY="true">
         <ion-item *ngFor="let item of nearbyMarkers">
           <div class="row">
             <div class="col">
@@ -46,8 +45,8 @@
             </div>
           </div>
         </ion-item>
+        <p style="text-align:center">没有更多记录</p>
       </ion-scroll>
     </ng-template>
-
   </div>
 </ion-content>

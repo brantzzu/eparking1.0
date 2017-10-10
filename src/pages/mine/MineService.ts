@@ -25,7 +25,7 @@ export class MineService {
      * @returns {Observable<R>}
      */
     updateUserPassword(oldPsw: string, newPsw: string) {
-        return this.httpService.post(`/user/modifyPassword/${this.globalData.userId}`, {
+        return this.httpService.post(`/modifyPassword/${this.globalData.userId}`, {
             'oldPsw': oldPsw,
             'newPsw': newPsw
         }).map((res: Response) => res.json());
