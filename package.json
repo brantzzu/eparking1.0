@@ -21,10 +21,11 @@
         "@angular/platform-browser": "4.1.3",
         "@angular/platform-browser-dynamic": "4.1.3",
         "@ionic-native/alipay": "^4.1.0",
+        "@ionic-native/app-availability": "^4.3.1",
         "@ionic-native/app-minimize": "^3.10.2",
         "@ionic-native/app-version": "^3.10.2",
         "@ionic-native/call-number": "^4.1.0",
-        "@ionic-native/camera": "^4.2.1",
+        "@ionic-native/camera": "^4.3.1",
         "@ionic-native/core": "3.10.2",
         "@ionic-native/device": "^3.10.2",
         "@ionic-native/file": "^3.10.2",
@@ -37,13 +38,16 @@
         "@ionic-native/status-bar": "^3.10.2",
         "@ionic-native/toast": "^3.10.2",
         "@ionic-native/transfer": "^3.10.2",
+        "@ionic-native/web-intent": "^4.3.1",
         "@ionic/storage": "2.0.1",
         "call-number": "^1.0.1",
         "chart.js": "^2.4.0",
+        "com.lampa.startapp": "^0.1.4",
         "com.synconset.imagepicker": "https://github.com/Telerik-Verified-Plugins/ImagePicker",
         "cordova-alipay-base": "git+https://github.com/xueron/cordova-alipay-base.git",
         "cordova-android": "^6.2.3",
         "cordova-plugin-app-version": "~0.1.9",
+        "cordova-plugin-appavailability": "^0.4.2",
         "cordova-plugin-appminimize": "https://github.com/tomloprod/cordova-plugin-appminimize.git",
         "cordova-plugin-camera": "^2.4.1",
         "cordova-plugin-compat": "^1.1.0",
@@ -51,7 +55,6 @@
         "cordova-plugin-device": "1.1.4",
         "cordova-plugin-file": "~4.3.2",
         "cordova-plugin-file-transfer": "~1.6.2",
-        "cordova-plugin-geolocation": "^2.4.3",
         "cordova-plugin-inappbrowser": "~1.7.0",
         "cordova-plugin-network-information": "~1.3.2",
         "cordova-plugin-splashscreen": "~4.0.1",
@@ -73,7 +76,7 @@
     },
     "devDependencies": {
         "@ionic/app-scripts": "1.3.7",
-        "ionic": "3.12.0",
+        "ionic": "3.13.0",
         "typescript": "2.3.3"
     },
     "cordova": {
@@ -103,8 +106,9 @@
             "cordova-alipay-base": {
                 "APP_ID": "2017080508048173"
             },
-            "cordova-plugin-geolocation": {},
-            "cordova-plugin-camera": {}
+            "cordova-plugin-appavailability": {},
+            "cordova-plugin-camera": {},
+            "com.lampa.startapp": {}
         }
     }
 }

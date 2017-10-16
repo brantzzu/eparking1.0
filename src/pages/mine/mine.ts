@@ -15,6 +15,11 @@ import { DEFAULT_AVATAR } from "../../providers/Constants";
 import { WorkMapPage } from "./work-map/work-map";
 import { SettingPage } from "./setting/setting";
 import { ChangePasswordPage } from "./change-password/change-password";
+import { AppAvailability } from '@ionic-native/app-availability';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { NativeService } from "../../providers/NativeService";
+//import { WebIntent } from '@ionic-native/web-intent';
+declare var startApp: any;
 
 @Component({
   selector: 'page-mine',
@@ -26,6 +31,10 @@ export class MinePage {
 
   constructor(private navCtrl: NavController,
     private platform: Platform,
+    private nativeService: NativeService,
+    private appAvailability: AppAvailability,
+    // private webIntent: WebIntent,
+    private iab: InAppBrowser,
     private storage: Storage,
     private helper: Helper,
     private modalCtrl: ModalController,
@@ -51,12 +60,6 @@ export class MinePage {
       //let userInfo = loginInfo.user;
       this.userInfo = loginInfo.user;
       this.avatarPath = loginInfo.user.avatarPath;
-      // if (userInfo) {
-      //   console.log("userInfo:");
-      //   console.log(userInfo);
-      //   this.userInfo = userInfo;
-      //   this.avatarPath = userInfo.avatarPath;
-      // }
     });
   }
 
@@ -177,6 +180,59 @@ export class MinePage {
     this.CallNumber.callNumber(number, true)
       .then(() => console.log('Launched dialer!'))
       .catch(() => console.log('Error launching dialer'));
+  }
+  openAlipay() {
+    this.launchExternalApp('alipay://', 'com.eg.android.AlipayGphone', 'alipay://platformapi/startapp?appId=60000002', 'https://www.alipay.com/');
+
+  }
+
+  launchExternalApp(iosSchemaName: string, androidPackageName: string, appUrl: string, httpUrl: string) {
+    let app: string;
+    if (this.nativeService.isIos()) {
+      app = iosSchemaName;
+    } else if (this.nativeService.isAndroid()) {
+      app = androidPackageName;
+    } else {
+      const browser = this.iab.create(httpUrl, '_system'); //new InAppBrowser(httpUrl, '_system');
+      return;
+    }
+
+    this.appAvailability.check(app).then(
+
+      () => { // success callback
+        console.log(app + ":is available ...");
+        if (this.nativeService.isIos()) {
+          window.open(appUrl);
+        } else {
+          let sApp = startApp.set({ /* params */
+            "action": "ACTION_VIEW",
+            "category": "CATEGORY_DEFAULT",
+            "type": "text/css",
+            "package": app,
+            "uri": appUrl,
+            "flags": ["FLAG_ACTIVITY_CLEAR_TOP", "FLAG_ACTIVITY_CLEAR_TASK"],
+            "intentstart": "startActivity",
+          }, { /* extras */
+              "EXTRA_STREAM": "extraValue1",
+              "extraKey2": "extraValue2"
+            });
+          sApp.start(() => { /* success */
+            console.log("app start success...");//alert("OK");
+          }, (error) => { /* fail */
+            console.log("app start failure...");//alert(error);
+          });
+          //const browser = this.iab.create(appUrl, '_system');
+
+        }
+
+        //let browser = this.iab.create(appUrl, '_system');
+        //window.open(appUrl);
+      },
+      () => { // error callback
+        console.log(app + ":is not available...");
+        const browser = this.iab.create(httpUrl, '_system');
+      }
+    );
   }
 
 }

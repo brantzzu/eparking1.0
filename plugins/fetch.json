@@ -79,14 +79,6 @@
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-plugin-camera": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-camera@~2.4.0"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
     "cordova-plugin-x-toast": {
         "source": {
             "type": "registry",
@@ -182,10 +174,10 @@
             "APP_ID": "2017080508048173"
         }
     },
-    "cordova-plugin-geolocation": {
+    "cordova-plugin-appavailability": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-geolocation"
+            "id": "cordova-plugin-appavailability"
         },
         "is_top_level": true,
         "variables": {}
@@ -196,6 +188,22 @@
             "id": "cordova-plugin-compat@^1.1.0"
         },
         "is_top_level": false,
+        "variables": {}
+    },
+    "cordova-plugin-camera": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-camera"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.lampa.startapp": {
+        "source": {
+            "type": "registry",
+            "id": "com.lampa.startapp"
+        },
+        "is_top_level": true,
         "variables": {}
     }
 }

@@ -16,6 +16,7 @@ import { Camera } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { Transfer } from '@ionic-native/transfer';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { AppAvailability } from '@ionic-native/app-availability';
 import { Geolocation } from '@ionic-native/geolocation';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Network } from '@ionic-native/network';
@@ -78,6 +79,7 @@ export class FunDebugErrorHandler implements ErrorHandler {
     Transfer,
     Geolocation,
     InAppBrowser,
+    AppAvailability,
     ImagePicker,
     Camera,
     Network,

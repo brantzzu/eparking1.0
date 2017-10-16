@@ -5,7 +5,6 @@ import { TestService } from "./TestService";
 import { Slides, NavController, ModalController, Tabs, Platform } from 'ionic-angular';
 import { NativeService } from "../../providers/NativeService";
 import { NavigationModalPage } from "../home/navigation-modal/navigation-modal";
-import { Geolocation } from '@ionic-native/geolocation';
 
 declare var AMap;
 
@@ -50,7 +49,6 @@ export class FirstPage {
   constructor(public testService: TestService,
     private nativeService: NativeService,
     private navCtrl: NavController,
-    private geolocation: Geolocation,
     private modalCtrl: ModalController,
     private platform: Platform
   ) {

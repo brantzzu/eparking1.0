@@ -2,19 +2,19 @@
   "_args": [
     [
       {
-        "raw": "cordova-plugin-camera@~2.4.0",
+        "raw": "cordova-plugin-camera",
         "scope": null,
         "escapedName": "cordova-plugin-camera",
         "name": "cordova-plugin-camera",
-        "rawSpec": "~2.4.0",
-        "spec": ">=2.4.0 <2.5.0",
-        "type": "range"
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
       },
       "F:\\ionic2_tabs-master\\node_modules"
     ]
   ],
   "_cnpm_publish_time": 1493685628886,
-  "_from": "cordova-plugin-camera@>=2.4.0 <2.5.0",
+  "_from": "cordova-plugin-camera@latest",
   "_hasShrinkwrap": false,
   "_id": "cordova-plugin-camera@2.4.1",
   "_inCache": true,
@@ -31,13 +31,13 @@
   "_npmVersion": "3.10.10",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "cordova-plugin-camera@~2.4.0",
+    "raw": "cordova-plugin-camera",
     "scope": null,
     "escapedName": "cordova-plugin-camera",
     "name": "cordova-plugin-camera",
-    "rawSpec": "~2.4.0",
-    "spec": ">=2.4.0 <2.5.0",
-    "type": "range"
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
   },
   "_requiredBy": [
     "#USER",
@@ -46,7 +46,7 @@
   "_resolved": "https://registry.npm.taobao.org/cordova-plugin-camera/download/cordova-plugin-camera-2.4.1.tgz",
   "_shasum": "195e34e12db64f1c49e764f7d4e3f261aa3d94c1",
   "_shrinkwrap": null,
-  "_spec": "cordova-plugin-camera@~2.4.0",
+  "_spec": "cordova-plugin-camera",
   "_where": "F:\\ionic2_tabs-master\\node_modules",
   "author": {
     "name": "Apache Software Foundation"
