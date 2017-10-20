@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { TestService } from "./TestService";
 // import { FileObj } from "../../model/FileObj";
-import { Slides, NavController, ModalController, Tabs, Platform } from 'ionic-angular';
+import { Slides, NavController, ModalController, Tabs, Platform, ViewController } from 'ionic-angular';
 import { NativeService } from "../../providers/NativeService";
 import { NavigationModalPage } from "../home/navigation-modal/navigation-modal";
 
@@ -50,6 +50,7 @@ export class FirstPage {
     private nativeService: NativeService,
     private navCtrl: NavController,
     private modalCtrl: ModalController,
+    public viewCtrl: ViewController,
     private platform: Platform
   ) {
     this.tab = this.navCtrl.parent;
@@ -86,20 +87,20 @@ export class FirstPage {
   }
 
   loadMap() {
-    let that = this;
+    //let that = this;
     try {
-      that.map = new AMap.Map('nearByParkingLot', {
+      this.map = new AMap.Map('nearByParkingLot', {
         view: new AMap.View2D({//创建地图二维视口
           zoom: 11, //设置地图缩放级别
           rotateEnable: true,
           showBuildingBlock: true
         })
       });
-      that.map.on('complete', () => {
-        that.mapIsComplete = true;
+      this.map.on('complete', () => {
+        this.mapIsComplete = true;
         AMap.plugin(['AMap.ToolBar', 'AMap.Scale'], () => {//添加工具条和比例尺
-          that.map.addControl(new AMap.ToolBar());
-          that.map.addControl(new AMap.Scale());
+          this.map.addControl(new AMap.ToolBar());
+          this.map.addControl(new AMap.Scale());
         });
 
       });
@@ -107,8 +108,9 @@ export class FirstPage {
         this.tab.select(1);
       });
     } catch (err) {
-      that.mapIsComplete = false;
-      that.nativeService.showToast('地图加载失败,请检查网络或稍后再试.')
+      this.mapIsComplete = false;
+      console.log("loadMap error:" + err);
+      this.nativeService.showToast('地图加载失败,请检查网络或稍后再试.')
     }
 
   }
@@ -159,5 +161,14 @@ export class FirstPage {
       if (marker) {
       }
     });
+  }
+  doRefresh(refresher) {
+    console.log('开始刷新操作', refresher);
+    window.location.reload();
+    setTimeout(() => {
+      //this.mapLocation();
+      console.log('异步刷新结束...');
+      refresher.complete();
+    }, 2000);
   }
 }

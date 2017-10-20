@@ -238,4 +238,12 @@ export class HomePage {
   //     return res.json();
   //   });
   // }
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    setTimeout(() => {
+      this.mapLocation();
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
 }
