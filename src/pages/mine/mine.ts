@@ -182,7 +182,7 @@ export class MinePage {
       .catch(() => console.log('Error launching dialer'));
   }
   openAlipay() {
-    this.launchExternalApp('alipay://', 'com.eg.android.AlipayGphone', 'alipay://platformapi/startapp?appId=60000002', 'https://www.alipay.com/');
+    this.launchExternalApp('alipay://', 'com.eg.android.AlipayGphone', 'alipay://platformapi/startapp?appId=20000056', 'https://www.alipay.com/');
 
   }
 

@@ -4,7 +4,6 @@ import { Storage } from '@ionic/storage';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Observable } from "rxjs";
 import { LoginService } from './LoginService';
-
 import { FindPasswordPage } from './find-password/find-password';
 import { RegisterPage } from './register/register';
 import { UserInfo, LoginInfo } from "../../model/UserInfo";
@@ -71,7 +70,6 @@ export class LoginPage {
         console.log("logiInfo:");
         console.log(loginUser);
         // console.log("loginInfo.user:" + loginInfo.user);
-
         if (loginUser == null) {
           this.nativeService.showToast('用户名或密码错误');
           this.submitted = false;
@@ -97,12 +95,10 @@ export class LoginPage {
           this.events.publish('user:login', loginInfo);
           this.viewCtrl.dismiss(loginUser);
         }
-
       }, err => {
         this.submitted = false;
       });
   }
-
 
   toRegister() {
     this.canLeave = true;

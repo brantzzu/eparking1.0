@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { TestService } from "./TestService";
 // import { FileObj } from "../../model/FileObj";
@@ -28,6 +28,7 @@ export class FirstPage {
   noNearbyParkingLot: boolean = true;
 
   @ViewChild(Slides) slides: Slides;
+  @ViewChild('map_container') map_container: ElementRef;
   slideinfos = [
     {
       title: "倚泊智能停车",
@@ -62,9 +63,13 @@ export class FirstPage {
 
   ngAfterContentInit() {
     this.loadMap();
-    //this.mapLocation();
-    //this.searchNearbyParkingLots();
+    setTimeout(() => {
+      if (!this.map) {
+        this.loadMap();
+      }
+    }, 500);
   }
+
   ionViewDidEnter() {
     this.slides.startAutoplay();
   }
@@ -89,7 +94,7 @@ export class FirstPage {
   loadMap() {
     //let that = this;
     try {
-      this.map = new AMap.Map('nearByParkingLot', {
+      this.map = new AMap.Map(this.map_container.nativeElement, {
         view: new AMap.View2D({//创建地图二维视口
           zoom: 11, //设置地图缩放级别
           rotateEnable: true,
@@ -164,9 +169,16 @@ export class FirstPage {
   }
   doRefresh(refresher) {
     console.log('开始刷新操作', refresher);
-    window.location.reload();
+
+
     setTimeout(() => {
-      //this.mapLocation();
+      //window.location.reload()
+      // let component = this.navCtrl.getActive().instance;
+      // if (component.ionViewDidLoad) {
+      //   component.ionViewDidLoad();
+      // }
+
+      //this.navCtrl.popToRoot();
       console.log('异步刷新结束...');
       refresher.complete();
     }, 2000);

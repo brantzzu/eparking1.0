@@ -16,6 +16,7 @@ export class RegisterPage {
   httpResponseData: any;
   randVerifyCode: String;
   disabled: boolean = false;
+  timer: any;
 
   constructor(private navCtrl: NavController,
     private viewCtrl: ViewController,
@@ -50,6 +51,7 @@ export class RegisterPage {
         this.httpResponseData = data['_body'];
         if (this.httpResponseData == "registeredSuccess") {
           this.nativeService.showToast('注册成功！');
+          // this.dismiss();
           this.navCtrl.setRoot(LoginPage);
         } else if (this.httpResponseData == "userExists") {
           this.nativeService.showToast('该手机号已经注册');
@@ -62,29 +64,32 @@ export class RegisterPage {
         console.log(error);// Error getting the data
         this.nativeService.showToast('注册失败，请重新注册！');
       });
-
     }
-
-
   }
 
   dismiss() {
     this.viewCtrl.dismiss();
+  }
+
+  ngOnDestroy() {
+    if (this.timer) {
+      clearInterval(this.timer);
+    }
   }
   /**
    * 获取手机验证码
    */
   getVerificationCode() {
     let times = 60;
-    let timer = null;
+    this.timer = null;
     this.disabled = true;
-    timer = setInterval(() => {
+    this.timer = setInterval(() => {
       times--;
       document.getElementById("verification").innerText = times + "秒后重试";
       if (times <= 0) {
         this.disabled = false;
         document.getElementById("verification").innerText = "发送验证码";
-        clearInterval(timer);
+        clearInterval(this.timer);
         times = 60;
       }
       //console.log(times);
@@ -109,5 +114,6 @@ export class RegisterPage {
       }
     });
   }
+
 
 }

@@ -53,10 +53,6 @@ export class ManageCarPage {
         } else {
             this.nativeService.showToast('获取用户信息失败，请重新登录！');
         }
-
-    }
-    ngAfterViewInit() {
-
     }
 
     removeItem(item) {
@@ -66,21 +62,15 @@ export class ManageCarPage {
                     if (result['_body'] == 'deletedSuccess') {
                         this.nativeService.showToast("删除成功！");
                         this.bindCars.splice(i, 1);
-
                     } else {
                         this.nativeService.showToast("删除失败！");
                     }
                 }, error => {
                     console.log(error);
                     this.nativeService.showToast("删除失败！");
-
                 })
-
             }
-
         }
-        // console.log("bindCars:");
-        // console.log(this.bindCars[0]['carNo']);
     }
 
     bindCar(carNo) {
@@ -112,13 +102,10 @@ export class ManageCarPage {
                 this.submitted = false;
                 this.nativeService.showToast("绑定失败！");
             }
-
         }, error => {
             console.log(error);
             this.nativeService.showToast("绑定失败！");
             this.submitted = false;
         });
-
     }
-
 }

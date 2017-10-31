@@ -7,10 +7,6 @@
   <!-- <div *ngIf="mapIsComplete">
     <ion-searchbar class="search-bar" (ionFocus)="ionFocus()" placeholder="找车位" [ngStyle]="{'top': isIos?'16px':''}"></ion-searchbar>
   </div> -->
-  <ion-refresher (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles" refreshingText="刷新中...">
-    </ion-refresher-content>
-  </ion-refresher>
   <div *ngIf="mapIsComplete">
     <ion-searchbar id="find-place" class="search-bar" (ionFocus)="ionFocus()" placeholder="找车位" [ngStyle]="{'top': isIos?'16px':''}"></ion-searchbar>
   </div>

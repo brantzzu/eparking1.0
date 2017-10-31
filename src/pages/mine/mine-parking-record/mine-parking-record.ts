@@ -35,11 +35,9 @@ export class ParkingRecordPage {
                     this.noParkingRecord = true;
                 }
             });
-
         } else {
             this.nativeService.showToast('获取用户信息失败，请重新登录！');
         }
-        //console.log("apidata:" + this.apidata);
     }
 
 }

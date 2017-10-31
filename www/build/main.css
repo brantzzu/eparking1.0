@@ -28444,7 +28444,7 @@ page-first .classification p {
   color: #404040;
 }
 
-page-first #nearByParkingLot {
+page-first .map_container {
   width: 100%;
   height: 150px;
 }

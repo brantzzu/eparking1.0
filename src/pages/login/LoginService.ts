@@ -14,7 +14,6 @@ export class LoginService {
   constructor(private httpService: HttpService) {
   }
 
-
   login(user): Observable<(UserInfo)> {
     let param = {
       'phone': user.phone,

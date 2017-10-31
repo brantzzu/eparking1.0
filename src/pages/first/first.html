@@ -30,63 +30,8 @@
     <p>{{address}}</p>
   </div>
   <hr>
-  <div id="nearByParkingLot">
+  <div #map_container class="map_container">
   </div>
-  <!-- <div id="functionPanel" class="classification">
-    <div class="cbox">
-      <div class="icon">
-        <img src="./assets/img/vip64.png" />
-      </div>
-      <p>VIP停车</p>
-    </div>
-    <div class="cbox">
-      <div class="icon">
-        <img src="./assets/img/key64.png" />
-      </div>
-      <p>代驾</p>
-    </div>
-    <div class="cbox">
-      <div class="icon">
-        <img src="./assets/img/car-repair64.png" />
-      </div>
-      <p>汽车维修</p>
-    </div>
-    <div class="cbox">
-      <div class="icon">
-        <img src="./assets/img/trailer64.png" />
-      </div>
-      <p>道路救援</p>
-    </div>
-    <div class="cbox">
-      <div class="icon">
-        <img src="./assets/img/car-wash64.png" />
-      </div>
-      <p>洗车</p>
-    </div>
-    <div class="cbox">
-      <div class="icon">
-        <img src="./assets/img/gas-station64.png" />
-      </div>
-      <p>加油</p>
-    </div>
-    <div class="cbox">
-      <div class="icon">
-        <img src="./assets/img/diagnostic64.png" />
-      </div>
-      <p>汽车装饰</p>
-    </div>
-    <div class="cbox">
-      <div class="icon">
-        <img src="./assets/img/book.png" />
-      </div>
-      <p>用车百科</p>
-    </div>
-  </div> -->
-  <!-- <ion-card>
-    <ion-card-content>
-      推荐
-    </ion-card-content>
-  </ion-card> -->
   <hr>
   <h4 style="text-align: center;font-size:11pt">推荐</h4>
   <div *ngIf="noNearbyParkingLot;else recommendParkingLots">
