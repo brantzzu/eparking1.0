@@ -409,21 +409,22 @@ export class NativeService {
   searchNearbyParkingLots(locationLng: string, locationLat: string): Observable<NearbyMarkers> {
     return Observable.create(observable => {
       AMap.plugin(['AMap.PlaceSearch'], () => {
-        //console.info("start geocoder()");
-        let placeSearch = new AMap.PlaceSearch({
-          pageSize: 50,
-          pageIndex: 1
-        });
-        placeSearch.setType('停车场');
-        placeSearch.setCity('上海');
-        placeSearch.searchNearBy("", [locationLng, locationLat], 1000, (status, result) => {
-          if (status === 'complete' && result.info === 'OK') {
-            if (result.poiList.count > 0) {
-              let nearbyMarkers = result.poiList.pois;
-              let recommendParkingLot = nearbyMarkers[0];
-              observable.next({ 'nearbyMarkers': nearbyMarkers, 'nearbyParkingLotsNum': result.poiList.count, 'recommendParkingLot': recommendParkingLot });
+        this.getUserCity().subscribe(city => {
+          let placeSearch = new AMap.PlaceSearch({
+            pageSize: 50,
+            pageIndex: 1
+          });
+          placeSearch.setType('停车场');
+          placeSearch.setCity(city);
+          placeSearch.searchNearBy("", [locationLng, locationLat], 1000, (status, result) => {
+            if (status === 'complete' && result.info === 'OK') {
+              if (result.poiList.count > 0) {
+                let nearbyMarkers = result.poiList.pois;
+                let recommendParkingLot = nearbyMarkers[0];
+                observable.next({ 'nearbyMarkers': nearbyMarkers, 'nearbyParkingLotsNum': result.poiList.count, 'recommendParkingLot': recommendParkingLot });
+              }
             }
-          }
+          });
         });
       });
     });
@@ -440,7 +441,7 @@ export class NativeService {
             //document.getElementById('tip').innerHTML = '您当前所在城市：' + cityinfo;
           }
         } else {
-          observable.next("暂时无法获取当前城市");
+          observable.next("上海");
           //document.getElementById('tip').innerHTML = result.info;
         }
       });

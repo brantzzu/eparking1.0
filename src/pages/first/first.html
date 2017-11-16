@@ -1,17 +1,13 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>倚泊</ion-title>
+    <ion-title class="navbarBackground">ETCSVIP</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <!-- <button ion-button block (click)="getFileData()">请求照片</button>
-  <page-select-picture [max]="6" [(fileObjList)]="fileObjList"></page-select-picture>
-  <button ion-button block (click)="alipays()">测试支付宝支付</button> -->
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles" refreshingText="刷新中...">
     </ion-refresher-content>
-
   </ion-refresher>
   <div class="index-page">
     <ion-slides #Slider loop="true" autoplay="3000" *ngIf="slideinfos.length > 1">
@@ -21,11 +17,6 @@
       </ion-slide>
     </ion-slides>
     <hr>
-    <!-- <button ion-button round full icon-right (click)="goToParkingLot()">进入智能停车
-    <ion-icon name='ios-arrow-forward' item-right></ion-icon>
-    </button> -->
-
-
     <h3>附近<span class="blue">{{nearbyParkingLotsNum}}</span>个停车场</h3>
     <p>{{address}}</p>
   </div>

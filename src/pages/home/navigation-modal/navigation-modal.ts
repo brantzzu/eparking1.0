@@ -25,21 +25,28 @@ export class NavigationModalPage {
   }
 
   ionViewWillEnter() {
-    let type = this.navigationType, options = { city: '上海市', panel: this.panel.nativeElement, map: this.map };
-    if (type === 1) {
+    //let type = this.navigationType, options = { city: '上海市', panel: this.panel.nativeElement, map: this.map };
+    this.nativeService.getUserCity().subscribe(city => {
+      let options = { city: city, panel: this.panel.nativeElement, map: this.map };
       AMap.service('AMap.Driving', () => {
         this.navigationIsReady = true;
-        this.doSearch(type, new AMap.Driving(options));
+        this.doSearch(1, new AMap.Driving(options));
       });
-    } else if (type === 2) {
-      AMap.service('AMap.Transfer', () => {
-        this.doSearch(type, new AMap.Transfer(options));
-      });
-    } else if (type === 3) {
-      AMap.service('AMap.Walking', () => {
-        this.doSearch(type, new AMap.Walking(options));
-      });
-    }
+    });
+    // if (type === 1) {
+    //   AMap.service('AMap.Driving', () => {
+    //     this.navigationIsReady = true;
+    //     this.doSearch(type, new AMap.Driving(options));
+    //   });
+    // } else if (type === 2) {
+    //   AMap.service('AMap.Transfer', () => {
+    //     this.doSearch(type, new AMap.Transfer(options));
+    //   });
+    // } else if (type === 3) {
+    //   AMap.service('AMap.Walking', () => {
+    //     this.doSearch(type, new AMap.Walking(options));
+    //   });
+    // }
   }
 
   doSearch(navigationType, navigationService) {

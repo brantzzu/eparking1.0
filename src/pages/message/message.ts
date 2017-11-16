@@ -25,6 +25,7 @@ export class MessagePage {
 
     ionViewWillEnter() {
         //this.msgList = [{ publicTime: '2017-07-09 12:05:38', messageContent: '倚泊智能停车正式上线啦!' }];
+        this.msgList = [];
         this.httpService.get("http://quants.sufe.edu.cn/messages").map(res => {
             return res.json();
         }).subscribe((json: any) => {

@@ -18,7 +18,6 @@ import { ChangePasswordPage } from "./change-password/change-password";
 import { AppAvailability } from '@ionic-native/app-availability';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { NativeService } from "../../providers/NativeService";
-//import { WebIntent } from '@ionic-native/web-intent';
 declare var startApp: any;
 
 @Component({
@@ -33,7 +32,6 @@ export class MinePage {
     private platform: Platform,
     private nativeService: NativeService,
     private appAvailability: AppAvailability,
-    // private webIntent: WebIntent,
     private iab: InAppBrowser,
     private storage: Storage,
     private helper: Helper,
@@ -49,8 +47,6 @@ export class MinePage {
       if (userInfo) {
         console.log("userInfoionviewwillEnter:");
         console.log(userInfo);
-        // this.userInfo = userInfo;
-        // this.avatarPath = userInfo.avatarPath;
       }
     });
   }
@@ -69,7 +65,6 @@ export class MinePage {
   /**
    * 停车记录
    */
-
   viewParkingRecord() {
     this.navCtrl.push(ParkingRecordPage, { 'userInfo': this.userInfo });
   }
@@ -79,7 +74,6 @@ export class MinePage {
    */
   manageCar() {
     this.navCtrl.push(ManageCarPage, { 'userInfo': this.userInfo });
-
   }
 
   setting() {
@@ -151,7 +145,6 @@ export class MinePage {
       data && (this.avatarPath = data.avatarPath)
     });
   }
-
   /**
    * 拨打电话
    */
@@ -183,7 +176,6 @@ export class MinePage {
   }
   openAlipay() {
     this.launchExternalApp('alipay://', 'com.eg.android.AlipayGphone', 'alipay://platformapi/startapp?appId=20000056', 'https://www.alipay.com/');
-
   }
 
   launchExternalApp(iosSchemaName: string, androidPackageName: string, appUrl: string, httpUrl: string) {
@@ -198,7 +190,6 @@ export class MinePage {
     }
 
     this.appAvailability.check(app).then(
-
       () => { // success callback
         console.log(app + ":is available ...");
         if (this.nativeService.isIos()) {
@@ -222,11 +213,7 @@ export class MinePage {
             console.log("app start failure...");//alert(error);
           });
           //const browser = this.iab.create(appUrl, '_system');
-
         }
-
-        //let browser = this.iab.create(appUrl, '_system');
-        //window.open(appUrl);
       },
       () => { // error callback
         console.log(app + ":is not available...");

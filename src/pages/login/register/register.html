@@ -43,6 +43,7 @@
       <button ion-button block type="submit" [disabled]="!registerForm.valid">注册</button>
     </div>
   </form>
-  <button class="verification" id="verification" ion-button small color="secondary" [disabled]="disabled" (click)="getVerificationCode()">获取验证码</button>
+  <button class="verification" id="verification" *ngIf="registerForm.controls.phone.valid" ion-button small color="secondary"
+    [disabled]="disabled" (click)="getVerificationCode()">获取验证码</button>
 </ion-content>
 <!--*ngIf="registerForm.controls.phone.valid" -->
