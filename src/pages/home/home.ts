@@ -88,13 +88,7 @@ export class HomePage {
     modal.present();
     modal.onDidDismiss(marker => {
       if (marker) {
-        //this.showIonFab = true;
-        //this.marker.push(marker.location.lng, marker.location.lat);
         this.map.clearMap();
-        // for (let i = 0; i < this.searchMarkers.length; i++) {
-        //   console.log("remove marker:" + this.searchMarkers[i].title);
-        //   this.map.remove(this.searchMarkers[i]);
-        // }
         let newmarker = new AMap.Marker({
           map: this.map,
           id: marker.id,
@@ -103,11 +97,6 @@ export class HomePage {
           extData: marker,
           title: marker.name
         });
-        // console.log(newmarker['extData']);
-        // console.log(newmarker.G);
-        // console.log(newmarker.c);
-        //this.searchMarkers.push(newmarker);
-        //this.map.setFitView();
         newmarker.setMap(this.map);
         this.map.setZoomAndCenter(16, [marker.location.lng, marker.location.lat]);
         this.address = newmarker.G.title;
@@ -232,10 +221,4 @@ export class HomePage {
       }, 1000);
     });
   }
-
-  // getMarkers() {
-  //   return this.httpService.get(this.url, null).map(res => {
-  //     return res.json();
-  //   });
-  // }
 }

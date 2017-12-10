@@ -390,8 +390,6 @@ export class NativeService {
       if (this.isMobile()) {
         LocationPlugin.getLocation(data => {
           observer.next({ 'lng': data.longitude, 'lat': data.latitude, 'address': data.address });
-          // console.log("locationData:");
-          // console.log(data);
         }, msg => {
           this.log('getUserLocation:' + msg);
           this.alert(msg.indexOf('缺少定位权限') == -1 ? ('错误消息：' + msg) : '缺少定位权限，请在手机设置中开启');
@@ -403,8 +401,12 @@ export class NativeService {
       }
     });
   }
+
   /**
  * 搜索附件的停车场
+ * @param locationLng 坐标经度
+ * @param locationLat 坐标纬度
+ * 
  */
   searchNearbyParkingLots(locationLng: string, locationLat: string): Observable<NearbyMarkers> {
     return Observable.create(observable => {
@@ -430,6 +432,9 @@ export class NativeService {
     });
   }
 
+  /**
+   * 获取用户当前所在城市
+   */
   getUserCity(): Observable<String> {
     return Observable.create(observable => {
       let citysearch = new AMap.CitySearch();

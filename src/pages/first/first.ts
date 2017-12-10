@@ -26,6 +26,8 @@ export class FirstPage {
   nearbyMarkers: any;
   recommendParkingLot: any;
   noNearbyParkingLot: boolean = true;
+  mapInitialised: boolean = false;
+  apiKey: any = "39d5ce75adbc78bdffd0c9fe13e3b5eb";
 
   @ViewChild(Slides) slides: Slides;
   @ViewChild('map_container') map_container: ElementRef;
@@ -61,13 +63,8 @@ export class FirstPage {
     });
   }
 
-  ngAfterContentInit() {
+  ionViewDidLoad() {
     this.loadMap();
-    setTimeout(() => {
-      if (!this.map) {
-        this.loadMap();
-      }
-    }, 500);
   }
 
   ionViewDidEnter() {
@@ -84,15 +81,38 @@ export class FirstPage {
     setInterval(() => {
       this.slides.slideNext(300, true);
     }, 3000);
-
   }
   goToParkingLot() {
-    //this.navCtrl.push(HomePage);
     this.tab.select(1);
   }
 
+  //地图加载
   loadMap() {
-    //let that = this;
+    this.addConnectivityListeners();
+    if (typeof AMap == "undefined" || typeof AMap.Map == "undefined") {
+      console.log(" maps JavaScript needs to be loaded.");
+      if (this.nativeService.isConnecting()) {
+        console.log("online, loading map");
+        //Load the SDK
+        window['mapInit'] = () => {
+          this.initMap();
+        }
+        let script = document.createElement("script");
+        script.id = "gaodeMaps";
+        script.src = 'http://webapi.amap.com/maps?v=1.3&key=' + this.apiKey + '&plugin=AMap.CitySearch&callback=mapInit';
+        document.body.appendChild(script);
+      }
+    } else {
+      if (this.nativeService.isConnecting()) {
+        console.log("showing map");
+        this.initMap();
+      }
+    }
+  }
+
+  //初始化地图
+  initMap() {
+    this.mapInitialised = true;
     try {
       this.map = new AMap.Map(this.map_container.nativeElement, {
         view: new AMap.View2D({//创建地图二维视口
@@ -117,15 +137,12 @@ export class FirstPage {
       console.log("loadMap error:" + err);
       this.nativeService.showToast('地图加载失败,请检查网络或稍后再试.')
     }
-
   }
   mapLocation() {
-    // let that = this;
     this.isPositioning = true;
     this.nativeService.getUserLocation().subscribe(position => {
       this.marker = new AMap.Marker({
         map: this.map,
-        //icon: "https://webapi.amap.com/theme/v1.3/markers/n/mark_r.png",
         icon: "./assets/img/location.png",
         position: new AMap.LngLat(position['lng'], position['lat']),
 
@@ -144,15 +161,13 @@ export class FirstPage {
           this.noNearbyParkingLot = false;
         }
       });
-
     }, () => {
       this.isPositioning = false;
     });
-
   }
 
+  //地图导航
   mapNavigation(navigationType, destinationLng, destinationLat) {
-    //let markerData = this.marker.getExtData();
     if (!destinationLng || !destinationLat) {
       this.nativeService.showToast('请选择您要去的停车场');
       return;
@@ -167,20 +182,47 @@ export class FirstPage {
       }
     });
   }
+
+  //刷新页面重新load地图
   doRefresh(refresher) {
     console.log('开始刷新操作', refresher);
-
-
     setTimeout(() => {
-      //window.location.reload()
-      // let component = this.navCtrl.getActive().instance;
-      // if (component.ionViewDidLoad) {
-      //   component.ionViewDidLoad();
-      // }
-
-      //this.navCtrl.popToRoot();
+      this.loadMap();
+      this.mapLocation();
       console.log('异步刷新结束...');
       refresher.complete();
     }, 2000);
+  }
+
+  //监听网络连接状态
+  addConnectivityListeners() {
+    let onOnline = () => {
+      setTimeout(() => {
+        if (typeof AMap == "undefined" || typeof AMap.Map == "undefined") {
+          this.loadMap();
+          this.mapLocation();
+        } else {
+          if (!this.mapInitialised) {
+            this.nativeService.showToast("网络已连接，请下拉刷新页面");
+          }
+        }
+
+      }, 2000);
+      // setTimeout(() => {
+      //   if (typeof AMap == "undefined" || typeof AMap.Map == "undefined") {
+      //     this.loadMap();
+      //     this.mapLocation();
+      //   } else {
+      //     if (!this.mapInitialised) {
+      //       this.initMap();
+      //     }
+      //   }
+      // }, 2000);
+      //this.doRefresh(event);
+    };
+    let onOffline = () => {
+    };
+    document.addEventListener('online', onOnline, false);
+    document.addEventListener('offline', onOffline, false);
   }
 }
